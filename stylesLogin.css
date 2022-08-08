@@ -1,0 +1,67 @@
+*{
+ margin: 0;
+ padding: 0;
+ font-family: 'Montserrat Alternates', sans-serif;
+}
+body{
+    margin: auto;
+    margin-top: 25vh;
+}
+html{
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./pexels-karolina-grabowska-5632397.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: white;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input:not(:nth-last-child(2)){
+    margin: 10px;
+    border-radius: 50px;
+    width: 300px;
+    height: 40px;
+    border-color: white;
+    text-indent: 20px;
+    font-size: 1em;
+}
+.check{
+    margin-right: 10px;
+}
+a{
+    margin-left: 25px;
+    text-decoration: none;
+    color: white;
+}
+button{
+    margin-top: 15px;
+    border-radius: 50px;
+    width: 150px;
+    height: 50px;
+    border-color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+i{
+    color: white;
+    font-size: 30px;
+}
+label{
+    display: flex;
+    align-items: center;
+    color: white;
+    margin: 10px;
+}
+span{
+    color: white;
+}
