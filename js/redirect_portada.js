@@ -15,7 +15,11 @@ $inputs.forEach(input=>{
             window.location.href = 'https://jamat1998.github.io/e-commerce-JAP/portada.html'
         }
         if(input.value == '' || !regex.test(value)){
-         $span.classList.remove('none');
+            $span.classList.remove('none')
+            setTimeout(() => {
+            $span.classList.add('none');
+         }, 4000);
+            
     }
 })
 
