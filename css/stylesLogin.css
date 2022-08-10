@@ -6,9 +6,13 @@
 body{
     margin: auto;
     margin-top: 25vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 html{
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./pexels-karolina-grabowska-5632397.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/pexels-karolina-grabowska-5632397.jpg');
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -21,22 +25,24 @@ h1{
     font-size: 3rem;
     color: white;
 }
-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.contact-form-error{
+    color: red;
+    transition: all 900ms ease;
+    font-size: 85%;
 }
-input:not(:nth-last-child(2)){
+.none{
+   display: none;
+}
+#email , #password{
     margin: 10px;
     border-radius: 50px;
     width: 300px;
     height: 40px;
-    border-color: white;
     text-indent: 20px;
     font-size: 1em;
 }
 .check{
-    margin-right: 10px;
+    margin-right: 10px; 
 }
 a{
     margin-left: 25px;
@@ -57,11 +63,11 @@ i{
     font-size: 30px;
 }
 label{
-    display: flex;
-    align-items: center;
+    display: block !important;
     color: white;
     margin: 10px;
+    text-align: center;
 }
 span{
-    color: white;
+    display: block;
 }

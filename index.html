@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesLogin.css" rel='stylesheet'>
+    <link rel="stylesheet" href="./css/stylesLogin.css" rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap" rel="stylesheet">
@@ -13,12 +13,12 @@
 </head>
 <body>
     <main>
-    <h1>User login!</h1>
-    <form>
+    <h1>e-commerce</h1>
+    <form class="contact-form">
   <label>
-  <i class="fa-regular fa-user"></i><input id="email" placeholder="Username or E-mail" type="email" required></label>
+  <i class="fa-regular fa-user"></i><input class="in" id="email" name="email" placeholder="E-mail" type="email" title="Email incorrecto" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" ></label>
   <label>
-    <i class="fa-solid fa-lock"></i><input id="password" type="Password" Placeholder="Password" required></label>
+    <i class="fa-solid fa-lock"></i><input class="in" id="password" name="password" type="Password" title="Minimo 6 caracteres, una letra mayuscula y un numero" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$" Placeholder="Password" ></label>
   <label>
   <input class="check" type="checkbox">Remember me        
   <a href="#">Forgot password?</a>
@@ -27,5 +27,5 @@
 </form>
 </main>
 </body>
-<script src="./redirect_portada.js"></script>
+<script src="./js/redirect_portada.js"></script>
 </html>
