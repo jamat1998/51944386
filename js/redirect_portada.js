@@ -1,7 +1,6 @@
 const d=document;
 const $form=d.querySelector('contact-form');
 const $inputs=d.querySelectorAll('.in');
-console.log($inputs)
 $inputs.forEach(input=>{
     const $span =d.createElement('span');
     $span.textContent=input.title;
