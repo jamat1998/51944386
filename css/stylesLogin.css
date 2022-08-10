@@ -12,7 +12,7 @@ body{
     text-align: center;
 }
 html{
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/pexels-karolina-grabowska-5632397.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/pexels-karolina-grabowska-5632397.jpg');
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
