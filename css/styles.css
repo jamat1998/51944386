@@ -188,3 +188,20 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+.products-heading,
+.product-description{
+  text-align: center;
+}
+.products_container{
+  display: flex;
+  border: black solid 1px;
+  padding: 10px;
+  margin: 5px;
+}
+.product-img{
+width: 300px;
+}
+.grid_products{
+  display: grid;
+  margin-left: 10px;
+}
