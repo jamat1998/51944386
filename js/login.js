@@ -7,17 +7,14 @@ $inputs.forEach(input=>{
     $span.classList.add('contact-form-error', 'none');
     input.insertAdjacentElement('afterend', $span);
     d.addEventListener('submit',(e)=>{
-        let pattern = input.pattern;
-        let regex = new RegExp(pattern);
-        let value = input.value;
         e.preventDefault();
-        if((regex.test(value)) && (!$inputs[1].value == '') && (!$inputs[0].value == '')){
+        if((!$inputs[1].value == '') && (!$inputs[0].value == '')){
             window.location.href = 'https://jamat1998.github.io/e-commerce-JAP/portada.html'
         }
-        if(input.value == '' || !regex.test(value)){
+        if(input.value == ''){
             $span.classList.remove('none')
             setTimeout(() => {
-            $span.classList.add('none');
+            $span.classList.add('none');s
          }, 4000);
             
     }
