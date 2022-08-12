@@ -11,7 +11,7 @@ async function getData(){
             `    
             <div class='products_container'>
             <img class='product-img' src='${auto.image}'>     
-            <div class='grid_products'>
+            <div class='cards'>
             <p id='name'>${auto.name} - ${auto.currency} ${auto.cost}</p>
             <p id='vendidos'>${auto.soldCount} Vendidos</p>
             <p id='description'>${auto.description}</p>

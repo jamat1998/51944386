@@ -195,15 +195,14 @@ a.custom-card:hover {
 .products_container{
   display: flex;
   padding: 10px;
-  margin: 5px;
   width: 100%;
-  border: rgba(0, 0, 0, 0.138) solid 1px;
   border-radius: 5px;
+  border-bottom:rgba(0, 0, 0, 0.138) solid 1px;
 }
 .product-img{
 width: 300px;
 }
-.grid_products{
+.cards{
   display: grid;
   grid-template-columns: 70% auto;
   grid-template-rows: 40px;
@@ -212,7 +211,6 @@ width: 300px;
 }
 .prod{
   border: rgba(0, 0, 0, 0.138) solid 1px;
-  padding: 10px;
   border-radius: 5px;
 }
 #description{
