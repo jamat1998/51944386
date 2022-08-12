@@ -12,10 +12,9 @@ async function getData(){
             <div class='products_container'>
             <img class='product-img' src='${auto.image}'>     
             <div class='grid_products'>
-            <p>Modelo: ${auto.name}</p>
-            <p>Costo: ${auto.currency} ${auto.cost}</p>
-            <p>Descripcion General: ${auto.description}</p>
-            <p>Vendidos: ${auto.soldCount}</p>
+            <p id='name'>${auto.name} - ${auto.currency} ${auto.cost}</p>
+            <p id='vendidos'>${auto.soldCount} Vendidos</p>
+            <p id='description'>${auto.description}</p>
             </div>
             </div>
             `

@@ -194,14 +194,35 @@ a.custom-card:hover {
 }
 .products_container{
   display: flex;
-  border: black solid 1px;
   padding: 10px;
   margin: 5px;
+  width: 100%;
+  border: rgba(0, 0, 0, 0.138) solid 1px;
+  border-radius: 5px;
 }
 .product-img{
 width: 300px;
 }
 .grid_products{
   display: grid;
-  margin-left: 10px;
+  grid-template-columns: 70% auto;
+  grid-template-rows: 40px;
+  margin-left: 30px;
+  width: 100%;
+}
+.prod{
+  border: rgba(0, 0, 0, 0.138) solid 1px;
+  padding: 10px;
+  border-radius: 5px;
+}
+#description{
+  grid-column-start:1;
+  grid-column-end:3;
+  margin-top: 10px;
+}
+#vendidos{
+  text-align: end;
+}
+#name{
+  font-size: 2em;
 }
