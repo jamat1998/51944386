@@ -26,19 +26,20 @@
 <script>
   function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
+    if(response.credential){
+      window.location.href = 'https://jamat1998.github.io/e-commerce-JAP/portada.html'
+    }
   }
   window.onload = function () {
     google.accounts.id.initialize({
       client_id: "48314215287-35o913h0v76b970k4chtjb9i7h73niqe.apps.googleusercontent.com",
-      ux_mode: "redirect",
-      login_uri: "https://jamat1998.github.io/e-commerce-JAP/",
-      callback: handleCredentialResponse
+      callback:handleCredentialResponse
     });
     google.accounts.id.renderButton(
       document.getElementById("buttonDiv"),
-      { theme: "filled_black", size: "large", type:'icon' }  // customization attributes
+      { theme: "filled_black", size: "large", type:'standard' }  // customization attributes
       );
-      google.accounts.id.prompt(); // also display the One Tap dialog
+      google.accounts.id.prompt();
     }
     </script>
 <div id="buttonDiv"></div>
