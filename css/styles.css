@@ -224,3 +224,6 @@ width: 300px;
 #name{
   font-size: 2em;
 }
+.data{
+  display: none;
+}

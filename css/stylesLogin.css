@@ -71,3 +71,10 @@ label{
 span{
     display: block;
 }
+.data{
+    display: none;
+  }
+  .g-signin2{
+    position: absolute;
+    left: 46%;
+  }
