@@ -74,7 +74,8 @@ span{
 .data{
     display: none;
   }
-  .g-signin2{
+  #buttonDiv{
     position: absolute;
-    left: 46%;
+left: 44%;
+bottom: 20%;
   }
