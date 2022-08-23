@@ -1,6 +1,6 @@
-const d=document;
+
 async function getData(){
-    let container = d.querySelector('.prod');
+    let container = document.querySelector('.prod');
     console.log(container);
     let data = await fetch(PRODUCTS_URL);
     if(data.ok){
@@ -23,3 +23,9 @@ async function getData(){
     }
   }
   getData();
+  const nav = document.getElementById('ULnavProducts');
+  const storageEmail = localStorage.getItem('emailValue')
+  nav.innerHTML += `
+  <li class="nav-item">
+  <a class="nav-link active" href="my-profile.html">${storageEmail}</a>
+  </li>`

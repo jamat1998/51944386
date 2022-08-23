@@ -1,4 +1,4 @@
-const nav = document.getElementById('ULnavProfile');
+const nav = document.getElementById('ULNavPortada');
 const storageEmail = localStorage.getItem('emailValue')
 nav.innerHTML += `
 <li class="nav-item">

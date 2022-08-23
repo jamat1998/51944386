@@ -9,15 +9,16 @@ $inputs.forEach(input=>{
     d.addEventListener('submit',(e)=>{
         e.preventDefault();
         if((!$inputs[1].value == '') && (!$inputs[0].value == '')){
+            localStorage.setItem('emailValue', $inputs[0].value)
             window.location.href = 'https://jamat1998.github.io/e-commerce-JAP/portada.html'
         }
         if(input.value == ''){
             $span.classList.remove('none')
             setTimeout(() => {
-            $span.classList.add('none');s
-         }, 4000);
+                $span.classList.add('none');s
+            }, 4000);
             
-    }
-})
-
+        }
+    })
+    
 })
