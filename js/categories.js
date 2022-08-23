@@ -141,9 +141,3 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 });
-const nav = document.getElementById('ULnavCategories');
-const storageEmail = localStorage.getItem('emailValue')
-nav.innerHTML += `
-<li class="nav-item">
-<a class="nav-link active" href="my-profile.html">${storageEmail}</a>
-</li>`

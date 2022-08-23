@@ -1,8 +1,7 @@
 
 async function getData(){
     let container = document.querySelector('.prod');
-    console.log(container);
-    let data = await fetch(PRODUCTS_URL);
+    let data = await fetch(`https://japceibal.github.io/emercado-api/cats_products/${localStorage.getItem('catID')}.json`);
     if(data.ok){
         let autos = await data.json(); 
         let info = autos.products;
@@ -23,6 +22,7 @@ async function getData(){
     }
   }
   getData();
+  
   const nav = document.getElementById('ULnavProducts');
   const storageEmail = localStorage.getItem('emailValue')
   nav.innerHTML += `
