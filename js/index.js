@@ -11,4 +11,10 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
+const nav = document.querySelectorAll('navbarNav');
+const storageEmail = localStorage.getItem('emailValue')
+nav.innerHTML += `
+<li class="nav-item">
+<a class="nav-link active" href="my-profile.html">${storageEmail}</a>
+</li>`
 });

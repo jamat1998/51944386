@@ -22,10 +22,3 @@ async function getData(){
     }
   }
   getData();
-  
-  const nav = document.getElementById('ULnavProducts');
-  const storageEmail = localStorage.getItem('emailValue')
-  nav.innerHTML += `
-  <li class="nav-item">
-  <a class="nav-link active" href="my-profile.html">${storageEmail}</a>
-  </li>`

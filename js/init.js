@@ -39,3 +39,9 @@ let getJSONData = function(url){
         return result;
     });
 }
+const nav = document.querySelector('#navbarNav ul');
+const storageEmail = localStorage.getItem('emailValue')
+nav.innerHTML += `
+<li class="nav-item">
+<a class="nav-link active" href="my-profile.html">${storageEmail}</a>
+</li>`
