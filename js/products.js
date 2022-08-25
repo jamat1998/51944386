@@ -9,12 +9,12 @@ function inner(product, array){
                         <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
                     </div>
                     <div class="col">
-                        <div>
+                        <div class='d-flex w-100 justify-content-between'>
                         <h4 class="mb-1"> ${product.name} </h4>
-                        <h4 class="mb-2">USD$ ${product.cost}</h4>
-                        </div>
-                        <div class="d-flex w-100 justify-content-end">
                         <small class="text-muted">${product.soldCount} artículos</small>
+                        </div>
+                        <div>
+                        <h4 class="mb-2">USD$ ${product.cost}</h4>
                         </div>
                         <p class="mb-1">${product.description}</p>
                         </div>
