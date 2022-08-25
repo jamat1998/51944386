@@ -64,7 +64,7 @@ async function getData(){
                 return 0;
             })
             container.innerHTML = ''
-            inner(autos, info)
+            inner(autos, rel)
         })    
         
         document.getElementById("clearRangeFilter").addEventListener("click", function(){
@@ -90,7 +90,7 @@ async function getData(){
             }
             for (let product of info) {
                 if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
+                ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
                     container.innerHTML += 
                     ` 
                     <div class="row">
