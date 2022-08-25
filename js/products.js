@@ -92,16 +92,23 @@ async function getData(){
                 if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
                     container.innerHTML += 
-                   `    
-                   <div class='products_container'>
-                   <img class='product-img' src='${product.image}'>     
-                   <div class='cards'>
-                   <p id='name'>${product.name} - ${product.currency} ${product.cost}</p>
-                   <p id='vendidos'>${product.soldCount} Vendidos</p>
-                   <p id='description'>${product.description}</p>
-                   </div>
-                   </div>
-                   ` 
+                    ` 
+                    <div class="row">
+                    <div class="col-3">
+                        <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                        <div class='d-flex w-100 justify-content-between'>
+                        <h4 class="mb-1"> ${product.name} </h4>
+                        <small class="text-muted">${product.soldCount} artículos</small>
+                        </div>
+                        <div>
+                        <h4 class="mb-2">USD$ ${product.cost}</h4>
+                        </div>
+                        <p class="mb-1">${product.description}</p>
+                        </div>
+                </div>
+       ` 
                 }
         }
     })
