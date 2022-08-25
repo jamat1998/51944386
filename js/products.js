@@ -119,8 +119,8 @@ async function getData(){
     document.getElementById('searchFilter').addEventListener('input',function(){
         let inputValue = document.getElementById('searchFilter').value;
         container.innerHTML = ''
-        
                 for(let product of productsArray){
+                    inputValue = inputValue.toLowerCase()
                  let name = product.name.toLowerCase()
                  let description = product.description.toLowerCase()
          if((name.includes(inputValue) === true || description.includes(inputValue) === true)){
