@@ -70,6 +70,9 @@ async function getData(){
         document.getElementById("clearRangeFilter").addEventListener("click", function(){
             document.getElementById("rangeFilterPriceMin").value = "";
             document.getElementById("rangeFilterPriceMax").value = "";
+            container.innerHTML = ''
+            inner(autos, info)
+            
         });
         
         document.getElementById("rangeFilterPrice").addEventListener("click", function(){
