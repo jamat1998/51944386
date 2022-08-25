@@ -116,6 +116,38 @@ async function getData(){
                 }
         }
     })
-    }
+    document.getElementById('searchFilter').addEventListener('input',function(){
+        let inputValue = document.getElementById('searchFilter').value;
+        container.innerHTML = ''
+                let name =[]
+                let description =[]
+                for(let product of productsArray){
+                    name = product.name.toLowerCase()
+                    description = product.description.toLowerCase()
+         if((name.includes(inputValue) === true || description.includes(inputValue) === true)){
+            container.innerHTML += 
+            ` 
+            <div class="row">
+            <div class="col-3">
+            <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
+            </div>
+            <div class="col">
+            <div class='d-flex w-100 justify-content-between'>
+            <h4 class="mb-1"> ${product.name} </h4>
+            <small class="text-muted">${product.soldCount} artículos</small>
+            </div>
+            <div>
+            <h4 class="mb-2">USD$ ${product.cost}</h4>
+            </div>
+            <p class="mb-1">${product.description}</p>
+            </div>
+            </div>
+            ` 
+        }
+    
+    
+}
+    })
+}
 }
         getData();
