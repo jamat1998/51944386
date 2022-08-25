@@ -26,12 +26,13 @@ async function getData(){
     let data = await fetch(PRODUCTS_URL);
     if(data.ok){
         let container = document.querySelector('#cat-list-container');
-        let autos = await data.json(); 
-        let info = autos.products;
-        inner(autos, info);
+        let response = await data.json(); 
+        let productsArray = response.products;
+        let product = '';
+        inner(product, productsArray);
         
         document.getElementById('sortAsc').addEventListener('click', function(){
-            const asc = info.sort(function(a, b) {
+            const ASC = productsArray.sort(function(a, b) {
                 let aCount = parseInt(a.cost);
                 let bCount = parseInt(b.cost);
                 if ( aCount < bCount ){ return -1; }
@@ -39,12 +40,12 @@ async function getData(){
                 return 0;
             })
             container.innerHTML = ''
-            inner(autos, asc)
+            inner(product, ASC)
         })
         
         document.getElementById('sortDesc').addEventListener('click', function(){
             
-            const des = info.sort(function(a, b) {
+            const DES = productsArray.sort(function(a, b) {
                 let aCount = parseInt(a.cost);
                 let bCount = parseInt(b.cost);
                 if ( aCount > bCount ){ return -1; }
@@ -52,11 +53,11 @@ async function getData(){
                 return 0;
             })
             container.innerHTML = ''
-            inner(autos, des)
+            inner(product, DES)
         })
         
         document.getElementById('sortByRel').addEventListener('click', function(){
-            const rel = info.sort(function(a, b) {
+            const REL = productsArray.sort(function(a, b) {
                 let aCount = parseInt(a.soldCount);
                 let bCount = parseInt(b.soldCount);
                 if ( aCount > bCount ){ return -1; }
@@ -64,14 +65,14 @@ async function getData(){
                 return 0;
             })
             container.innerHTML = ''
-            inner(autos, rel)
+            inner(product, REL)
         })    
         
         document.getElementById("clearRangeFilter").addEventListener("click", function(){
             document.getElementById("rangeFilterPriceMin").value = "";
             document.getElementById("rangeFilterPriceMax").value = "";
             container.innerHTML = ''
-            inner(autos, info)
+            inner(product, productsArray)
             
         });
         
@@ -91,7 +92,7 @@ async function getData(){
             else{
                 maxCount = undefined;
             }
-            for (let product of info) {
+            for (let product of productsArray) {
                 if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
                 ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
                     container.innerHTML += 
