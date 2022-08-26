@@ -192,38 +192,3 @@ a.custom-card:hover {
 .product-description{
   text-align: center;
 }
-.products_container{
-  display: flex;
-  padding: 10px;
-  width: 100%;
-  border-radius: 5px;
-  border-bottom:rgba(0, 0, 0, 0.138) solid 1px;
-}
-.product-img{
-width: 300px;
-}
-.cards{
-  display: grid;
-  grid-template-columns: 70% auto;
-  grid-template-rows: 40px;
-  margin-left: 30px;
-  width: 100%;
-}
-.prod{
-  border: rgba(0, 0, 0, 0.138) solid 1px;
-  border-radius: 5px;
-}
-#description{
-  grid-column-start:1;
-  grid-column-end:3;
-  margin-top: 10px;
-}
-#vendidos{
-  text-align: end;
-}
-#name{
-  font-size: 2em;
-}
-.data{
-  display: none;
-}
