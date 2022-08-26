@@ -36,6 +36,7 @@
 const responsePayload = parseJwt(response.credential);
 if(response){
   localStorage.setItem('emailValue', responsePayload.email)
+  localStorage.setItem('profilePicture', responsePayload.picture)
       window.location.href = 'https://jamat1998.github.io/e-commerce-JAP/portada.html'
     }
   }

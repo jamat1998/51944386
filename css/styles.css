@@ -192,3 +192,10 @@ a.custom-card:hover {
 .product-description{
   text-align: center;
 }
+#profilePicture{
+border-radius: 50%;
+width: 40px;
+}
+#profile{
+  display: flex;
+}

@@ -40,8 +40,10 @@ let getJSONData = function(url){
     });
 }
   const storageEmailLogin = localStorage.getItem('emailValue')
+  const storagePicture = localStorage.getItem('profilePicture')
   document.querySelector('#navbarNav ul').innerHTML += `
-  <li class="nav-item">
+  <li class="nav-item" id='profile'>
+  <img src="${storagePicture}" id='profilePicture'>
   <a class="nav-link active" href="my-profile.html">${storageEmailLogin}</a>
   </li>`
 
