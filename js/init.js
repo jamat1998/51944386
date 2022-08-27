@@ -47,7 +47,7 @@ document.querySelector('#navbarNav ul').innerHTML += `
 <a class="nav-link active" href="my-profile.html">${storageEmailLogin}</a>
 </li>`
 
-  console.log(document.getElementById('profilePicture').getAttribute('src'.value))
+
   if(document.getElementById('profilePicture').getAttribute('src') == null){
     document.getElementById('profilePicture').remove();
   }
