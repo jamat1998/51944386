@@ -1,4 +1,4 @@
-
+//FUNCION QUE AGREGA LAS CARDS DE PRODUCTOS
 function inner(product, array){
     let container = document.querySelector('#cat-list-container');
     for (product of array) {
@@ -21,6 +21,7 @@ function inner(product, array){
                 </div>
        ` 
 }
+// FUNCION ASINCRONA QUE HACE EL FETCH Y TRABAJA CON LA RESPUESTA
 }
 async function getData(){
     let data = await fetch(PRODUCTS_URL);
@@ -30,7 +31,7 @@ async function getData(){
         let productsArray = response.products;
         let product = '';
         inner(product, productsArray);
-        
+//ORDEN ASCENDENTE
         document.getElementById('sortAsc').addEventListener('click', function(){
             const ASC = productsArray.sort(function(a, b) {
                 let aCount = parseInt(a.cost);
@@ -42,7 +43,7 @@ async function getData(){
             container.innerHTML = ''
             inner(product, ASC)
         })
-        
+//ORDEN DESCENDENTE
         document.getElementById('sortDesc').addEventListener('click', function(){
             
             const DES = productsArray.sort(function(a, b) {
@@ -55,7 +56,7 @@ async function getData(){
             container.innerHTML = ''
             inner(product, DES)
         })
-        
+//ORDEN RELATIVO       
         document.getElementById('sortByRel').addEventListener('click', function(){
             const REL = productsArray.sort(function(a, b) {
                 let aCount = parseInt(a.soldCount);
@@ -67,7 +68,7 @@ async function getData(){
             container.innerHTML = ''
             inner(product, REL)
         })    
-        
+//BORRA LOS CAMPOS DE FILTROS Y ORDENA LOS PRODUCTOS POR DEFAULT        
         document.getElementById("clearRangeFilter").addEventListener("click", function(){
             document.getElementById("rangeFilterPriceMin").value = "";
             document.getElementById("rangeFilterPriceMax").value = "";

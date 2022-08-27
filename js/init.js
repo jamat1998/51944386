@@ -39,6 +39,7 @@ let getJSONData = function(url){
         return result;
     });
 }
+//INSERTAR EMAIL DE USUARIO Y FOTO(SI SE INGRESA POR GOOGLESIGN)
 const storageEmailLogin = localStorage.getItem('emailValue')
 const storagePicture = localStorage.getItem('profilePicture')
 document.querySelector('#navbarNav ul').innerHTML += `
@@ -46,7 +47,6 @@ document.querySelector('#navbarNav ul').innerHTML += `
 <img src="${storagePicture}" id='profilePicture'>
 <a class="nav-link active" href="my-profile.html">${storageEmailLogin}</a>
 </li>`
-
 
   if(document.getElementById('profilePicture').getAttribute('src') == null){
     document.getElementById('profilePicture').remove();
