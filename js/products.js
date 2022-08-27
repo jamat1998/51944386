@@ -14,7 +14,7 @@ function inner(product, array){
                         <small class="text-muted">${product.soldCount} artículos</small>
                         </div>
                         <div>
-                        <h4 class="mb-2">USD$ ${product.cost}</h4>
+                        <h4 class="mb-2">${product.currency} ${product.cost}</h4>
                         </div>
                         <p class="mb-1">${product.description}</p>
                         </div>
@@ -108,7 +108,7 @@ async function getData(){
                         <small class="text-muted">${product.soldCount} artículos</small>
                         </div>
                         <div>
-                        <h4 class="mb-2">USD$ ${product.cost}</h4>
+                        <h4 class="mb-2">${product.currency} ${product.cost}</h4>
                         </div>
                         <p class="mb-1">${product.description}</p>
                         </div>
@@ -137,7 +137,7 @@ async function getData(){
             <small class="text-muted">${product.soldCount} artículos</small>
             </div>
             <div>
-            <h4 class="mb-2">USD$ ${product.cost}</h4>
+            <h4 class="mb-2">${product.currency} ${product.cost}</h4>
             </div>
             <p class="mb-1">${product.description}</p>
             </div>
