@@ -1,9 +1,14 @@
 //FUNCION QUE AGREGA LAS CARDS DE PRODUCTOS
+function setproductsID(id) {
+    localStorage.setItem("productsID", id);
+    window.location = "product-info.html"
+}
 function inner(product, array){
     let container = document.querySelector('#cat-list-container');
     for (product of array) {
         container.innerHTML += 
-       `    
+       `
+       <div onclick="setproductsID(${product.id})" class="list-group-item list-group-item-action cursor-active">    
        <div class="row">
                     <div class="col-3">
                         <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
