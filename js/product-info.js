@@ -57,6 +57,7 @@ async function getDatas(){
                                     `
                     }
 
+                }
                     //ingresar puntuacion reccorriendo el score
 
                     function commentStars(score){
@@ -78,7 +79,6 @@ async function getDatas(){
                                  return x;
                         }
                     
-            }
 
             //trabajando con la promesa y insertando al dom el contenido
 
