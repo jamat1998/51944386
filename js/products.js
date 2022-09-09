@@ -1,8 +1,9 @@
-//FUNCION QUE AGREGA LAS CARDS DE PRODUCTOS
+//gurdamos en el almacenamiento local el id de los productos
 function setproductsID(id) {
     localStorage.setItem("productsID", id);
     window.location = "product-info.html"
 }
+//FUNCION QUE AGREGA LAS CARDS DE PRODUCTOS
 function inner(product, array){
     let container = document.querySelector('#cat-list-container');
     for (product of array) {
