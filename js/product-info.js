@@ -92,15 +92,10 @@ async function getDatas(){
                         }
                     getcomments()
                     
-                    //trabajando con el objeto date para formar la fecha del comentario
+                    //trabajando con date para formar la fecha del comentario
 
-                    const date = new Date
-                    const day = date.getDate()
-                    const month = date.getMonth()
-                    const year = date.getFullYear()
-                    const minutes = date.getMinutes()
-                    const hour = date.getHours()
-                    const seconds = date.getSeconds()
+                    let date = new Date()
+                    let today = date.toLocaleString()
 
              //envento submit para que se ejecute al ingresar el nuevo comentario
 
@@ -113,14 +108,15 @@ async function getDatas(){
                         <div class="border border-4 mb-2 p-2">
                         <div class='d-flex flex-row p-2'>
                         <p class='pe-3 ps-2'>${localStorage.getItem('emailValue')}</p>
-                        <p class='pe-5'>${year}-${month}-${day} ${hour}:${minutes}:${seconds}</p>
+                        <p class='pe-5'>${today}</p>
                         ${commentStars(valueSelect)}${commentblackStars(valueSelect)}
                         </div>
                         <div>
                         <p class='ps-3'>${textarea}</p>
                         </div>
                         </div>
-                        `)
-                        
+                        `
+                        )
+                        document.getElementById('comment').value = '' 
                  })
                 
