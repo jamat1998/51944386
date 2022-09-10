@@ -199,3 +199,6 @@ width: 40px;
 #profile{
   display: flex;
 }
+.active{
+  display: none;
+}

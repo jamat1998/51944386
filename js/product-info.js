@@ -10,17 +10,17 @@ async function getDatas(){
 
         container.innerHTML += 
         `
-        <div class='ms-5'>  
+        <div class='ms-5 d-flex flex-column align-items-center'>  
         <h3 class="mb-1 mt-4 mb-4"> ${response.name} </h3>
-            <h5 class="mb-1 col">Precio:</h5>
+            <h4 class="mb-1 col">Precio:</h4>
             <p>${response.currency} ${response.cost}</p>
-            <h5 class="mb-1">Descripcion:</h5>
+            <h4 class="mb-1">Descripcion:</h4>
             <p>${response.description}</p>
-            <h5 class="mb-1 ">Categoria:</h5>
+            <h4 class="mb-1 ">Categoria:</h4>
             <p>${response.category}</p>
-            <h5 class="mb-1 ">Cantidad de Vendidos:</h5>
+            <h4 class="mb-1 ">Cantidad de Vendidos:</h4>
             <p>${response.soldCount}</p>
-            <h5 class="mb-1 col">Imagenes Iustrativas:</h5>
+            <h4 class="mb-1 col">Imagenes Iustrativas:</h4>
             </div>
             <div id=imagesProductsInfo class='d-flex justify-content-evenly flex-row flex-wrap'>
             ` 
@@ -44,14 +44,16 @@ async function getDatas(){
                     function cardComments(response){
                         for(comments of response){
                             container.innerHTML+=`      
-                        <div class="border border-4 mb-2 p-2">
-                                    <div class='d-flex flex-row p-2'>
-                                    <p class='pe-3 ps-2'>${comments.user}</p>
-                                    <p class='pe-5'>${comments.dateTime}</p>
+                        <div class="border border-4 d-flex flex-column">
+                                    <div class='d-flex flex-row justify-content-around'>
+                                    <div>
                                     ${commentStars(comments.score)}${commentblackStars(comments.score)}
                                     </div>
-                                    <div>
-                                    <p class='ps-3'>${comments.description}</p>
+                                    <h5>${comments.user}</h5>
+                                    <p>${comments.dateTime}</p>
+                                    </div>
+                                    <div class='d-flex flex-row justify-content-center'>
+                                    <p>${comments.description}</p>
                                     </div>
                                     </div>
                                     `
@@ -102,21 +104,41 @@ async function getDatas(){
                     document.addEventListener('submit', (e)=>{
                         let textarea =document.getElementById('comment').value
                         let valueSelect=document.getElementById('points').value
+                        const spanError = document.getElementById('spanError')
+                        const spinner=document.querySelector('.spinner-border')
+                        const msgSuccess = document.getElementById('msgSuccess')
                         e.preventDefault();
+                        if(textarea !== ''){
+                            container.insertAdjacentHTML('afterbegin', 
+                             `      
+                            <div class="border border-4 d-flex flex-column">
+                                        <div class='d-flex flex-row justify-content-around'>
+                                        <div>
+                                        ${commentStars(valueSelect)}${commentblackStars(valueSelect)}
+                                        </div>
+                                        <h5>${localStorage.getItem('emailValue')}</h5>
+                                        <p>${today}</p>
+                                        </div>
+                                        <div class='d-flex flex-row justify-content-center'>
+                                        <p>${textarea}</p>
+                                        </div>
+                                        </div>
+                                        `
+                            )
+                            spinner.classList.remove('active')
 
-                        container.insertAdjacentHTML('afterbegin', `
-                        <div class="border border-4 mb-2 p-2">
-                        <div class='d-flex flex-row p-2'>
-                        <p class='pe-3 ps-2'>${localStorage.getItem('emailValue')}</p>
-                        <p class='pe-5'>${today}</p>
-                        ${commentStars(valueSelect)}${commentblackStars(valueSelect)}
-                        </div>
-                        <div>
-                        <p class='ps-3'>${textarea}</p>
-                        </div>
-                        </div>
-                        `
-                        )
-                        document.getElementById('comment').value = '' 
-                 })
+                            setTimeout(() => {
+                                spinner.classList.add('active')   
+                                msgSuccess.innerHTML =`<span>Comentario Enviado <img width=30px src="/img/chat.png"></span>`
+                               setTimeout(() => {
+                                   msgSuccess.innerHTML =''
+                               }, 2500);
+                            }, 3000);
+                            document.getElementById('comment').value = ''
+                            spanError.innerHTML = ''
+                        }
+                        if(textarea === '') {
+                            spanError.innerHTML =`<span>Ingrese un comentario</span>`
+                        }
+                    })
                 
