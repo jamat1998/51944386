@@ -109,6 +109,8 @@ async function getDatas(){
                         const msgSuccess = document.getElementById('msgSuccess')
                         e.preventDefault();
                         if(textarea !== ''){
+                            spinner.classList.remove('active')
+                            setTimeout(() => {
                             container.insertAdjacentHTML('afterbegin', 
                              `      
                             <div class="border border-4 d-flex flex-column">
@@ -125,9 +127,6 @@ async function getDatas(){
                                         </div>
                                         `
                             )
-                            spinner.classList.remove('active')
-
-                            setTimeout(() => {
                                 spinner.classList.add('active')   
                                 msgSuccess.innerHTML =`<span>Comentario Enviado <img width=30px src="/img/chat.png"></span>`
                                setTimeout(() => {
