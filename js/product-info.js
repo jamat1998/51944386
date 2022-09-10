@@ -128,10 +128,12 @@ async function getDatas(){
                                         `
                             )
                                 spinner.classList.add('active')   
-                                msgSuccess.innerHTML =`<span>Comentario Enviado <img width=30px src="/img/chat.png"></span>`
-                               setTimeout(() => {
+                                msgSuccess.innerHTML =`<span>Comentario Enviado <img width=30px src="./img/chat.png"></span>`
+                               
+                                setTimeout(() => {
                                    msgSuccess.innerHTML =''
                                }, 2500);
+
                             }, 3000);
                             document.getElementById('comment').value = ''
                             spanError.innerHTML = ''
