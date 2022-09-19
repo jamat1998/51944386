@@ -40,15 +40,30 @@ let getJSONData = function(url){
     });
 }
 //INSERTAR EMAIL DE USUARIO Y FOTO(SI SE INGRESA POR GOOGLESIGN)
-const storageEmailLogin = localStorage.getItem('emailValue')
+let storageEmailLogin = localStorage.getItem('emailValue')
 const storagePicture = localStorage.getItem('profilePicture')
 document.querySelector('#navbarNav ul').innerHTML += `
-<li class="nav-item" id='profile'>
-<img src="${storagePicture}" id='profilePicture'>
-<a class="nav-link active" href="my-profile.html">${storageEmailLogin}</a>
-</li>`
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  Menu
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="my-profile.html">Mi Perfil<img src="${storagePicture}" id='profilePicture'></a>
+    <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+    <li><a class="dropdown-item" id='closeSesion' href="#">Cerrar Sesion</a></li>
+  </ul>
+</div>
+`
 
   if(document.getElementById('profilePicture').getAttribute('src') == null){
     document.getElementById('profilePicture').remove();
   }
+  const closeSession=document.getElementById('closeSesion')
+  closeSession.addEventListener('click',()=>{
+    localStorage.removeItem('emailValue')
+    localStorage.removeItem('profilePicture')
+    window.location='index.html'
+  })
+
+  
   
