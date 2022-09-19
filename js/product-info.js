@@ -190,7 +190,7 @@ async function getDatas(){
                             setTimeout(() => {
                             container.insertAdjacentHTML('afterbegin', 
                              `      
-                            <div class="border border-4 d-flex flex-column">
+                            <div class="border d-flex flex-column mx-5 my-2">
                                         <div class='d-flex flex-row justify-content-around'>
                                         <div>
                                         ${commentStars(valueSelect)}${commentblackStars(valueSelect)}
