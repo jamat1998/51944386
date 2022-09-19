@@ -9,32 +9,100 @@ async function getDatas(){
         //insertando los cards para los diferentes productos
 
         container.innerHTML += 
-        `
-        <div class='ms-5 d-flex flex-column align-items-center'>  
-        <h3 class="mb-1 mt-4 mb-4"> ${response.name} </h3>
-            <h4 class="mb-1 col">Precio:</h4>
-            <p>${response.currency} ${response.cost}</p>
-            <h4 class="mb-1">Descripcion:</h4>
-            <p>${response.description}</p>
-            <h4 class="mb-1 ">Categoria:</h4>
-            <p>${response.category}</p>
-            <h4 class="mb-1 ">Cantidad de Vendidos:</h4>
-            <p>${response.soldCount}</p>
-            <h4 class="mb-1 col">Imagenes Iustrativas:</h4>
-            </div>
-            <div id=imagesProductsInfo class='d-flex justify-content-evenly flex-row flex-wrap'>
-            ` 
-
-            //recorre las imagenes dentro de la respuesta y las agrego al contenido del sitio
-
-             for(let images of response.images){
-                 d.getElementById('imagesProductsInfo').innerHTML += `
-                 <img src="${images}" alt="${response.category}" width="300" height="300" class="img-thumbnail my-3">
+        `<div class="container border my-4 py-3">
+        <h2 class="d-flex justify-content-center"> ${response.name} </h2>
+        <div class="row align-items-start">
+        <div class='col'> 
+        <div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators ">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
                  </div>
-                             `
-                         }
+                           <div class="carousel-inner">
+                             <div class="carousel-item active">
+                               <img src="${response.images[0]}" class="d-block w-100">
+                               <div class="carousel-caption d-none d-md-block">
+                               </div>
+                               </div>
+                             <div class="carousel-item">
+                             <img src="${response.images[1]}" class="d-block w-100">
+                               <div class="carousel-caption d-none d-md-block">
+                               </div>
+                               </div>
+                               <div class="carousel-item">
+                               <img src="${response.images[2]}" class="d-block w-100">
+                               <div class="carousel-caption d-none d-md-block">
+                               </div>
+                               </div>
+                           <div class="carousel-item">
+                           <img src="${response.images[3]}" class="d-block w-100">
+                           <div class="carousel-caption d-none d-md-block">
+                           </div>
+                           </div>
+                           </div>
+                           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                           <span class="visually-hidden">Previous</span>
+                           </button>
+                           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                           <span class="visually-hidden">Next</span>
+                           </button>
+                           </div>
+                           </div>
+                           <div class='col'>
+                               <h4 class="mb-1">Precio:</h4>
+                               <p>${response.currency} ${response.cost}</p>
+                               <h4 >Descripcion:</h4>
+                               <p>${response.description}</p>
+                               <h4 class="mb-1 ">Categoria:</h4>
+                               <p>${response.category}</p>
+                               <h4 class="mb-1 ">Cantidad de Vendidos:</h4>
+                               <p>${response.soldCount}</p>
+                               </div>
+                           </div>
+                           </div>
+                           </div>
+                         `
+                            
+                           d.getElementById('relatedImages').innerHTML += `
+                           <h4 class="d-flex flex-row justify-content-center my-4">Productos Relacionados</h4>
+                          <div id="carouselRelated" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                           <div class="carousel-indicators">
+                             <button type="button" data-bs-target="#carouselRelated" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                             <button type="button" data-bs-target="#carouselRelated" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                           </div>
+                           <div class="carousel-inner">
+                             <div class="carousel-item active">
+                               <img src="${response.relatedProducts[0].image}" class="d-block w-100">
+                               <div class="carousel-caption d-none d-md-block">
+                                 <h4>${response.relatedProducts[0].name}</h4>
+                               </div>
+                             </div>
+                             <div class="carousel-item">
+                               <img src="${response.relatedProducts[1].image}" class="d-block w-100">
+                               <div class="carousel-caption d-none d-md-block">
+                                 <h4>${response.relatedProducts[1].name}</h4>
+                               </div>
+                             </div>
+                           </div>
+                           <button class="carousel-control-prev" type="button" data-bs-target="#carouselRelated" data-bs-slide="prev">
+                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                             <span class="visually-hidden">Previous</span>
+                           </button>
+                           <button class="carousel-control-next" type="button" data-bs-target="#carouselRelated" data-bs-slide="next">
+                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                             <span class="visually-hidden">Next</span>
+                           </button>
+                         </div>
+                         `
+                                    }
+                                   
                         }
-                    }
+
+                    
                     getDatas();
                     
                     //cards para luego ingresar el contenido al sitio
@@ -44,7 +112,7 @@ async function getDatas(){
                     function cardComments(response){
                         for(comments of response){
                             container.innerHTML+=`      
-                        <div class="border border-4 d-flex flex-column">
+                        <div class="border border d-flex flex-column mx-5 my-2">
                                     <div class='d-flex flex-row justify-content-around'>
                                     <div>
                                     ${commentStars(comments.score)}${commentblackStars(comments.score)}
@@ -82,6 +150,15 @@ async function getDatas(){
                         }
                     
 
+                        function cardRelated(response){
+                            for(let images of response.relatedProducts){
+                                d.getElementById('relatedImages').innerHTML += `
+                                <img src="${images}" alt="${response.category}" width="300" height="300" class="img-thumbnail my-3">
+                                </div>
+                                            `
+                                        }
+                                       }
+                        
             //trabajando con la promesa y insertando al dom el contenido
 
                     async function getcomments(){
