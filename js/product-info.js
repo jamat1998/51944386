@@ -67,7 +67,7 @@ async function getDatas(){
                            </div>
                          `
                             
-                           d.getElementById('relatedImages').innerHTML += `
+                           document.getElementById('relatedImages').innerHTML += `
                            <h4 class="d-flex flex-row justify-content-center my-4">Productos Relacionados</h4>
                           <div id="carouselRelated" class="carousel carousel-dark slide" data-bs-ride="carousel">
                            <div class="carousel-indicators">
