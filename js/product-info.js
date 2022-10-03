@@ -11,6 +11,8 @@ async function getDatas(){
         container.innerHTML += 
         `<div class="container border my-4 py-3">
         <h2 class="d-flex justify-content-center"> ${response.name} </h2>
+        <div class='d-flex justify-content-end mx-5'>
+        <button type="button" class="btn btn-success">Comprar</button></div>
         <div class="row align-items-start">
         <div class='col'> 
         <div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel">
