@@ -1,5 +1,17 @@
 //funcion asincrona para trabajar con respuesta del json
-
+function setcart(response){
+  let data = JSON.parse(localStorage.getItem("data"));
+  if(!data) data=[];
+   if(!data.includes(response)){
+    data.push({
+      name:response.name,
+      image:response.images[0],
+      cost: response.cost,
+      currency: response.currency
+    })
+  localStorage.setItem("data", JSON.stringify(data));
+}
+}
 async function getDatas(){
     let data = await fetch(PRODUCT_INFO_URL);
     if(data.ok){
@@ -12,7 +24,7 @@ async function getDatas(){
         `<div class="container border my-4 py-3">
         <h2 class="d-flex justify-content-center"> ${response.name} </h2>
         <div class='d-flex justify-content-end mx-5'>
-        <button type="button" class="btn btn-success">Comprar</button></div>
+        <button id='cc' type="button" class="btn btn-success">Comprar</button></div>
         <div class="row align-items-start">
         <div class='col'> 
         <div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -100,9 +112,25 @@ async function getDatas(){
                            </button>
                          </div>
                          `
-                                    }
-                                   
+                         let btn=document.getElementById('cc')
+                         btn.addEventListener('click',()=>{
+                          btn.disabled=true
+                          btn.insertAdjacentHTML('beforebegin',`<span class='mx-5' id='alert'>
+                          Se agrego el articulo al carrito!
+                        </span>`)
+                          setTimeout(() => {
+                           let alert = document.getElementById('alert')
+                           alert.remove()
+                          }, 2500);
+                           let data = JSON.parse(localStorage.getItem("data"));
+                           if(!data) data=[];
+                             data.push([response.id,response.name,response.images[0],response.cost,response.currency])
+                             localStorage.setItem("data", JSON.stringify(data));
+
+                          })
                         }
+                }             
+              
 
                     
                     getDatas();
