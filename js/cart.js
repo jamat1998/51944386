@@ -1,6 +1,6 @@
 const container = document.getElementById("containerCart");
 
-function inn(img, name, currency, cost) {
+function inn(img, name, currency, cost,id) {
   container.innerHTML += `
   <td><img src='${img}' width='100px'></td>
   <td>${name}</td>
@@ -12,7 +12,7 @@ function inn(img, name, currency, cost) {
     </td>
     <td>${currency} ${cost}</td>
     <td>
-    <button type="button" class="btn-sm btn-outline-danger">Eliminar</button>
+    <button type="button" class="btn-sm btn-outline-danger" value=${id}>Eliminar</button>
     </td>
     </tbody>
     </table>
@@ -26,17 +26,22 @@ async function getData() {
       response.articles[0].image,
       response.articles[0].name,
       response.articles[0].currency,
-      response.articles[0].unitCost
+      response.articles[0].unitCost,
+      response.articles[0].id
     );
     let storage = JSON.parse(localStorage.getItem("data"));
-    for (let item of storage) {
+    let array=[]
+    let ids=[]
+    array.push(storage)
+    for (let item of array[0]) {
+      let id = item.id;
       let name = item.name;
       let image = item.image;
       let currency = item.currency;
       let cost = item.cost;
-      inn(image, name, currency, cost);
+      inn(image, name, currency, cost,id);
+      ids.push(item.id)
     }
-      
       const input = document.querySelectorAll(".cuantity");
       
       for (let i of input) {
@@ -52,14 +57,22 @@ async function getData() {
           } else subtotal.innerHTML = `${currency} 0`;
         });
       }
-    }
       let btn=document.querySelectorAll('.btn-sm')
-      
+
       for(let i of btn){
         i.addEventListener('click',(e)=>{
           e.preventDefault()
+          let itemId= parseInt(e.target.value)
+          if(ids.includes(itemId)){
+            let index= ids.indexOf(itemId)
+            console.log(ids)
+            array[0].splice(index,1)
+            ids.splice(index,1)
             e.path[2].remove()
+            localStorage.setItem("data", JSON.stringify(array[0]));
+          }
         })
-    }
+      }
+}
 }
 getData();
