@@ -11,7 +11,7 @@ async function getDatas(){
         `<div class="container border my-4 py-3">
         <h2 class="d-flex justify-content-center"> ${response.name} </h2>
         <div class='d-flex justify-content-end mx-5'>
-        <button id='cc' type="button" class="btn btn-success">Comprar</button></div>
+        <button id='btnBuy' type="button" class="btn btn-success">Comprar</button></div>
         <div class="row align-items-start">
         <div class='col'> 
         <div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -99,7 +99,8 @@ async function getDatas(){
                            </button>
                          </div>
                          `
-                         let btn=document.getElementById('cc')
+
+                         let btn=document.getElementById('btnBuy')
                          btn.addEventListener('click',()=>{
                           btn.disabled=true
                           btn.insertAdjacentHTML('beforebegin',`<span class='mx-5' id='alert'>
@@ -109,7 +110,7 @@ async function getDatas(){
                            let alert = document.getElementById('alert')
                            alert.remove()
                           }, 2500);
-                           let data = JSON.parse(localStorage.getItem("data"));
+                           let data = JSON.parse(localStorage.getItem("CART"));
                            if(!data) data=[];
                            let res={
                             id:response.id,
@@ -119,7 +120,7 @@ async function getDatas(){
                             currency: response.currency
                           } 
                           data.push(res)
-                        localStorage.setItem("data", JSON.stringify(data));
+                        localStorage.setItem("CART", JSON.stringify(data));
 
                           })
                         }
