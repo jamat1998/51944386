@@ -1,17 +1,4 @@
 //funcion asincrona para trabajar con respuesta del json
-function setcart(response){
-  let data = JSON.parse(localStorage.getItem("data"));
-  if(!data) data=[];
-   if(!data.includes(response)){
-    data.push({
-      name:response.name,
-      image:response.images[0],
-      cost: response.cost,
-      currency: response.currency
-    })
-  localStorage.setItem("data", JSON.stringify(data));
-}
-}
 async function getDatas(){
     let data = await fetch(PRODUCT_INFO_URL);
     if(data.ok){
@@ -124,8 +111,15 @@ async function getDatas(){
                           }, 2500);
                            let data = JSON.parse(localStorage.getItem("data"));
                            if(!data) data=[];
-                             data.push([response.id,response.name,response.images[0],response.cost,response.currency])
-                             localStorage.setItem("data", JSON.stringify(data));
+                           let res={
+                            id:response.id,
+                            name:response.name,
+                            image:response.images[0],
+                            cost: response.cost,
+                            currency: response.currency
+                          } 
+                          data.push(res)
+                        localStorage.setItem("data", JSON.stringify(data));
 
                           })
                         }

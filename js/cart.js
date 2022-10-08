@@ -2,8 +2,8 @@ const container = document.getElementById("containerCart");
 
 function inn(img, name, currency, cost) {
   container.innerHTML += `
-    <td><img src='${img}' width='100px'></td>
-    <td>${name}</td>
+  <td><img src='${img}' width='100px'></td>
+  <td>${name}</td>
     <td>${currency}</td>
     <td>${cost}</td>
     <td><div class="input-group-sm col-5">
@@ -11,10 +11,11 @@ function inn(img, name, currency, cost) {
     </div>
     </td>
     <td>${currency} ${cost}</td>
-    </tr>
+    <td>
+    <button type="button" class="btn-sm btn-outline-danger">Eliminar</button>
+    </td>
     </tbody>
     </table>
-    <tr>
     `;
 }
 async function getData() {
@@ -28,15 +29,16 @@ async function getData() {
       response.articles[0].unitCost
     );
     let storage = JSON.parse(localStorage.getItem("data"));
-    for (let x of storage) {
-      let name = x[2];
-      let image = x[1];
-      let currency = x[4];
-      let cost = x[3];
-      inn(name, image, currency, cost);
-
+    for (let item of storage) {
+      let name = item.name;
+      let image = item.image;
+      let currency = item.currency;
+      let cost = item.cost;
+      inn(image, name, currency, cost);
+    }
+      
       const input = document.querySelectorAll(".cuantity");
-
+      
       for (let i of input) {
         i.addEventListener("input", (e) => {
           let cuantity = e.target.value;
@@ -44,13 +46,20 @@ async function getData() {
           let calc = parseInt(cuantity) * parseInt(cost);
           let subtotal = e.path[3].cells[5];
           let currency = e.path[3].cells[2].textContent;
-
+          
           if (calc > 0) {
             subtotal.innerHTML = `${currency} ${calc}`;
           } else subtotal.innerHTML = `${currency} 0`;
         });
       }
     }
-  }
+      let btn=document.querySelectorAll('.btn-sm')
+      
+      for(let i of btn){
+        i.addEventListener('click',(e)=>{
+          e.preventDefault()
+            e.path[2].remove()
+        })
+    }
 }
 getData();
