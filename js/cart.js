@@ -7,7 +7,7 @@ function inn(img, name, currency, cost,id) {
     <td>${currency}</td>
     <td>${cost}</td>
     <td><div class="input-group-sm col-5">
-    <input class='cuantity' type='number'class="form-control" value=1>
+    <input type='number'class="form-control cuantity" value=1>
     </div>
     </td>
     <td>${currency} ${cost}</td>
@@ -62,13 +62,12 @@ async function getData() {
       for(let i of btn){
         i.addEventListener('click',(e)=>{
           e.preventDefault()
+          e.path[2].remove()
           let itemId= parseInt(e.target.value)
           if(ids.includes(itemId)){
             let index= ids.indexOf(itemId)
-            console.log(ids)
             array[0].splice(index,1)
             ids.splice(index,1)
-            e.path[2].remove()
             localStorage.setItem("data", JSON.stringify(array[0]));
           }
         })
