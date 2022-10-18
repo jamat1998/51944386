@@ -102,24 +102,25 @@ async function getDatas(){
 
                          let btn=document.getElementById('btnBuy')
                          btn.addEventListener('click',()=>{
-                          btn.disabled=true
-                          btn.insertAdjacentHTML('beforebegin',`<span class='mx-5' id='alert'>
-                          Se agrego el articulo al carrito!
-                        </span>`)
-                          setTimeout(() => {
-                           let alert = document.getElementById('alert')
-                           alert.remove()
-                          }, 2500);
-                           let data = JSON.parse(localStorage.getItem("CART"));
-                           if(!data) data=[];
-                           let res={
-                            id:response.id,
-                            name:response.name,
-                            image:response.images[0],
-                            cost: response.cost,
-                            currency: response.currency
-                          } 
-                          data.push(res)
+                           btn.disabled=true
+                           btn.insertAdjacentHTML('beforebegin',`<span class='mx-5' id='alert'>
+                           Se agrego el articulo al carrito!
+                           </span>`)
+                           setTimeout(() => {
+                             let alert = document.getElementById('alert')
+                             alert.remove()
+                            }, 2500);
+                            let data = JSON.parse(localStorage.getItem("CART"));
+                            if(!data) data=[];
+                            let res={
+                              id:response.id,
+                              name:response.name,
+                              image:response.images[0],
+                              cost: response.cost,
+                              currency: response.currency
+                            } 
+                                data.push(res);
+
                         localStorage.setItem("CART", JSON.stringify(data));
 
                           })
