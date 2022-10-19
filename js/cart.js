@@ -144,6 +144,7 @@ getData();
           event.preventDefault();
           event.stopPropagation();
         }
+        if (form.checkValidity()) {
         event.preventDefault();
           const alert = (message, type) => {
             const alertPlaceholder = document.getElementById(
@@ -175,6 +176,7 @@ getData();
           
           }
             response();
+          }
           form.classList.add("was-validated");
         },
         false
