@@ -13,7 +13,7 @@ function inner(img, name, currency, cost, id) {
     <td>${currency}</td>
     <td>${cost}</td>
     <td><div class="input-group-sm col-5">
-    <input type='number'class="form-control input" value=1>
+    <input type='number'class="form-control input" value=1 min=1 required>
     </div>
     </td>
     <td class='ttl'>${currency} ${cost}</td>
@@ -144,13 +144,12 @@ getData();
           event.preventDefault();
           event.stopPropagation();
         }
-        if (form.checkValidity()) {
-          event.preventDefault();
+        event.preventDefault();
           const alert = (message, type) => {
             const alertPlaceholder = document.getElementById(
               "liveAlertPlaceholder"
             );
-            
+
             const wrapper = document.createElement("div");
             wrapper.innerHTML = [
               `<div class="alert alert-${type} alert-dismissible" role="alert">`,
@@ -158,7 +157,6 @@ getData();
               '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
               "</div>",
             ].join("");
-  
             alertPlaceholder.append(wrapper);
           };
           async function response() {
@@ -167,19 +165,20 @@ getData();
               let response = await data.json();
 
               const alertTrigger = document.getElementById("liveAlertBtn");
-              if (alertTrigger) {
-                alertTrigger.addEventListener("click", () => {
-                 alert(`${response.msg}`, "success");
-                });
-              }
+              alertTrigger.addEventListener("click", () => {
+                alert(`${response.msg}`, "success");
+                setTimeout(() => {
+                  location.reload()
+                }, 3500);
+              });
             }
+          
           }
-          response();
-        }
-        form.classList.add("was-validated");
-      },
-      false
-    );
+            response();
+          form.classList.add("was-validated");
+        },
+        false
+        );
   });
 })();
 
@@ -194,6 +193,7 @@ inputPremium.addEventListener("click", () => {
 });
 
 //VALIDACIONES MODAL INPUTS
+let lblTransfer = document.getElementById("lblTransfer");
 let inputAccount = document.getElementById("input-account");
 let expDate = document.getElementById("exp-date");
 let zipCode = document.getElementById("zip-code");
@@ -216,4 +216,27 @@ inputCredit.addEventListener("click", () => {
   cardNumber.disabled = false;
   accountNumber.disabled = true;
   accountNumber.value = ``;
+});
+document.addEventListener("input", () => {
+  if (
+    inputCredit.checked &&
+    expDate.value != "" &&
+    zipCode.value !== "" &&
+    cardNumber.value !== ""
+  ) {
+    lblTransfer.classList.remove("is-invalid");
+  }
+  if (
+    (inputCredit.checked && expDate.value == "") ||
+    zipCode.value == "" ||
+    cardNumber.value == ""
+  ) {
+    lblTransfer.classList.add("is-invalid");
+  }
+  if (inputAccount.checked && accountNumber.value !== "") {
+    lblTransfer.classList.remove("is-invalid");
+  }
+  if (inputAccount.checked && accountNumber.value == "") {
+    lblTransfer.classList.add("is-invalid");
+  }
 });

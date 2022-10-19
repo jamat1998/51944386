@@ -52,6 +52,8 @@
       </div>
     </nav>
     <main>
+      <div class="d-flex justify-content-center w-100">
+      <form class="needs-validation w-75" novalidate>
       <h2 class="d-flex justify-content-center m-4">Carrito de compras</h2>
       <h4 class="d-flex justify-content-center m-4">Articulos a comprar</h4>
       <table class="table">
@@ -68,8 +70,6 @@
         </thead>
         <tbody id="containerCart"></tbody>
       </table>
-      <div class="d-flex justify-content-center w-100">
-      <form class="needs-validation w-50" novalidate>
         <h4 class="my-4">Tipo de envio</h4>
 
         <div class="form-check">
@@ -185,15 +185,15 @@
         </div>
         <h4 class="my-4">Forma de pago</h4>
 
-        <label for="asd" class="form-label">Transferencia bancaria</label>
-        <div class="">
-          <a
-            href=""
-            data-bs-toggle="modal"
-            id="asd"
-            data-bs-target="#exampleModal"
-            >Seleccionar</a
-          >
+        <label class="form-label is-invalid" id="lblTransfer">Transferencia bancaria</label>
+        <a
+          href=""
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          >Seleccionar</a
+        >
+        <div class="invalid-feedback">
+          Debe seleccionar una forma de pago
         </div>
         <div
           class="modal fade"
@@ -311,8 +311,8 @@
           <div id="liveAlertPlaceholder"></div>
           <button id="liveAlertBtn" class="btn btn-primary w-100 my-3" type="submit">Finalizar compra</button>
        
-      </form>
-    </div>
+        </form>
+      </div>
     </main>
     <footer class="text-muted">
       <div class="container">
