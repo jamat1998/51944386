@@ -127,12 +127,9 @@ async function getData() {
   }
 }
 getData();
+
 (() => {
   "use strict";
-
-  //VALIDACIONES INPUTS
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
   const forms = document.querySelectorAll(".needs-validation");
 
   // Loop over them and prevent submission
@@ -143,6 +140,8 @@ getData();
         if (!form.checkValidity()) {
           event.preventDefault();
           event.stopPropagation();
+
+          lblTransfer.classList.add("is-invalid")
         }
         if (form.checkValidity()) {
         event.preventDefault();
@@ -219,6 +218,7 @@ inputCredit.addEventListener("click", () => {
   accountNumber.disabled = true;
   accountNumber.value = ``;
 });
+
 document.addEventListener("input", () => {
   if (
     inputCredit.checked &&
@@ -241,4 +241,4 @@ document.addEventListener("input", () => {
   if (inputAccount.checked && accountNumber.value == "") {
     lblTransfer.classList.add("is-invalid");
   }
-});
+}); 
