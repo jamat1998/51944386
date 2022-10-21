@@ -5,6 +5,7 @@ let subtotalCost = document.getElementById("subtotalCost");
 let inputExpress = document.getElementById("inputExpress");
 let inputStandar = document.getElementById("inputStandar");
 let inputPremium = document.getElementById("inputPremium");
+let push = false;
 
 function inner(img, name, currency, cost, id) {
   container.innerHTML += `
@@ -128,23 +129,23 @@ async function getData() {
 }
 getData();
 
+//VALIDACIONES INPUTS
 (() => {
   "use strict";
   const forms = document.querySelectorAll(".needs-validation");
 
-  // Loop over them and prevent submission
   Array.from(forms).forEach((form) => {
     form.addEventListener(
       "submit",
       (event) => {
+        push = true;
         if (!form.checkValidity()) {
           event.preventDefault();
           event.stopPropagation();
-
-          lblTransfer.classList.add("is-invalid")
+          lblTransfer.classList.add("is-invalid");
         }
         if (form.checkValidity()) {
-        event.preventDefault();
+          event.preventDefault();
           const alert = (message, type) => {
             const alertPlaceholder = document.getElementById(
               "liveAlertPlaceholder"
@@ -168,18 +169,42 @@ getData();
               alertTrigger.addEventListener("click", () => {
                 alert(`${response.msg}`, "success");
                 setTimeout(() => {
-                  location.reload()
+                  location.reload();
                 }, 3500);
               });
             }
-          
           }
-            response();
-          }
-          form.classList.add("was-validated");
-        },
-        false
-        );
+          response();
+        }
+        form.classList.add("was-validated");
+        if (push) {
+          document.addEventListener("input", () => {
+            if (
+              inputCredit.checked &&
+              expDate.value != "" &&
+              zipCode.value !== "" &&
+              cardNumber.value !== ""
+            ) {
+              lblTransfer.classList.remove("is-invalid");
+            }
+            if (
+              (inputCredit.checked && expDate.value == "") ||
+              zipCode.value == "" ||
+              cardNumber.value == ""
+            ) {
+              lblTransfer.classList.add("is-invalid");
+            }
+            if (inputAccount.checked && accountNumber.value !== "") {
+              lblTransfer.classList.remove("is-invalid");
+            }
+            if (inputAccount.checked && accountNumber.value == "") {
+              lblTransfer.classList.add("is-invalid");
+            }
+          });
+        }
+      },
+      false
+    );
   });
 })();
 
@@ -218,27 +243,3 @@ inputCredit.addEventListener("click", () => {
   accountNumber.disabled = true;
   accountNumber.value = ``;
 });
-
-document.addEventListener("input", () => {
-  if (
-    inputCredit.checked &&
-    expDate.value != "" &&
-    zipCode.value !== "" &&
-    cardNumber.value !== ""
-  ) {
-    lblTransfer.classList.remove("is-invalid");
-  }
-  if (
-    (inputCredit.checked && expDate.value == "") ||
-    zipCode.value == "" ||
-    cardNumber.value == ""
-  ) {
-    lblTransfer.classList.add("is-invalid");
-  }
-  if (inputAccount.checked && accountNumber.value !== "") {
-    lblTransfer.classList.remove("is-invalid");
-  }
-  if (inputAccount.checked && accountNumber.value == "") {
-    lblTransfer.classList.add("is-invalid");
-  }
-}); 
