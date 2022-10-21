@@ -1,4 +1,4 @@
-const container = document.getElementById("containerCart");
+let container = document.getElementById("containerCart");
 let costWithSend = document.getElementById("costWithSend");
 let sendCost = document.getElementById("sendCost");
 let subtotalCost = document.getElementById("subtotalCost");
@@ -25,7 +25,8 @@ function inner(img, name, currency, cost, id) {
     </table>
     `;
 }
-function calcs(porcent, innerSendCost, innerTotal) {
+
+function calcs(porcent) {
   let subTotalValue = subtotalCost.textContent.slice(
     4,
     subtotalCost.textContent.length
@@ -33,8 +34,8 @@ function calcs(porcent, innerSendCost, innerTotal) {
   let total =
     parseInt(subTotalValue) + (parseInt(subTotalValue) / 100) * porcent;
   let sendType = (parseInt(subTotalValue) / 100) * porcent;
-  innerTotal.innerHTML = `USD ${total}`;
-  innerSendCost.innerHTML = `USD ${sendType}`;
+  costWithSend.innerHTML = `USD ${total}`;
+  sendCost.innerHTML = `USD ${sendType}`;
 }
 
 function totalsBuy() {
@@ -50,13 +51,13 @@ function totalsBuy() {
     });
     subtotalCost.innerHTML = `USD ${parseInt(subtotal)}`;
     if (inputExpress.checked) {
-      calcs(7, sendCost, costWithSend);
+      calcs(7);
     }
     if (inputStandar.checked) {
-      calcs(5, sendCost, costWithSend);
+      calcs(5);
     }
     if (inputPremium.checked) {
-      calcs(15, sendCost, costWithSend);
+      calcs(15);
     }
   }
 }
@@ -164,7 +165,6 @@ getData();
             let data = await fetch(CART_BUY_URL);
             if (data.ok) {
               let response = await data.json();
-
               const alertTrigger = document.getElementById("liveAlertBtn");
               alertTrigger.addEventListener("click", () => {
                 alert(`${response.msg}`, "success");
@@ -177,6 +177,7 @@ getData();
           response();
         }
         form.classList.add("was-validated");
+       
         if (push) {
           document.addEventListener("input", () => {
             if (
@@ -208,17 +209,19 @@ getData();
   });
 })();
 
+//ACTUALIZACION DE COSTOS EN TIEMPO REAL
 inputExpress.addEventListener("click", () => {
-  calcs(7, sendCost, costWithSend);
+  calcs(7);
 });
 inputStandar.addEventListener("click", () => {
-  calcs(5, sendCost, costWithSend);
+  calcs(5);
 });
 inputPremium.addEventListener("click", () => {
-  calcs(15, sendCost, costWithSend);
+  calcs(15);
 });
 
 //VALIDACIONES MODAL INPUTS
+
 let lblTransfer = document.getElementById("lblTransfer");
 let inputAccount = document.getElementById("input-account");
 let expDate = document.getElementById("exp-date");
@@ -226,6 +229,8 @@ let zipCode = document.getElementById("zip-code");
 let cardNumber = document.getElementById("card-number");
 let accountNumber = document.getElementById("account-number");
 let inputCredit = document.getElementById("input-credit");
+
+//DESACTIVAR CAMPOS NO SELECCIONADOS
 
 inputAccount.addEventListener("click", () => {
   expDate.disabled = true;
