@@ -79,13 +79,13 @@ async function getDatas(){
                              <div class="carousel-item active">
                                <img src="${response.relatedProducts[0].image}" class="d-block w-100">
                                <div class="carousel-caption d-none d-md-block">
-                                 <h4>${response.relatedProducts[0].name}</h4>
+                                 <h4 class='bg-light py-1 rounded'>${response.relatedProducts[0].name}</h4>
                                </div>
                              </div>
                              <div class="carousel-item">
                                <img src="${response.relatedProducts[1].image}" class="d-block w-100">
                                <div class="carousel-caption d-none d-md-block">
-                                 <h4>${response.relatedProducts[1].name}</h4>
+                                 <h4 class='bg-light py-1 rounded'>${response.relatedProducts[1].name}</h4>
                                </div>
                              </div>
                            </div>
