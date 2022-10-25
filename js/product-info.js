@@ -8,10 +8,7 @@ async function getDatas() {
     //insertando los cards para los diferentes productos
 
     for (let i = 0; i < response.images.length; i++) {
-      document.getElementById(
-        "innerCarousel"
-      ).innerHTML += 
-      `
+      document.getElementById("innerCarousel").innerHTML += `
     <div class="carousel-item itemProduct">
       <img src="${response.images[i]}" class="d-block w-100" />
       <div class="carousel-caption d-none d-md-block"></div>
@@ -21,8 +18,7 @@ async function getDatas() {
       item[0].classList.add("active");
     }
     for (let i = 0; i < response.relatedProducts.length; i++) {
-      document.getElementById("carouselItemRelated").innerHTML +=
-       `
+      document.getElementById("carouselItemRelated").innerHTML += `
        <div class="carousel-item itemRelated">
         <img src="${response.relatedProducts[i].image}" class="d-block w-100">
        <div class="carousel-caption d-none d-md-block">
@@ -32,8 +28,7 @@ async function getDatas() {
       const itemRelated = document.querySelectorAll(".itemRelated");
       itemRelated[0].classList.add("active");
     }
-    container.innerHTML += 
-    `
+    container.innerHTML += `
     <h2>${response.name}</h2>
     <div class="d-flex justify-content-end mx-5">
       <button id="btnBuy" type="button" class="btn btn-success">Comprar</button>
@@ -91,7 +86,7 @@ function cardComments(response) {
     <div class="border border d-flex flex-column mx-5 my-2">
       <div class="d-flex flex-row justify-content-around">
         <div>
-        ${commentStars( comments.score )}${commentblackStars(comments.score)}
+        ${commentStars(comments.score)}${commentblackStars(comments.score)}
         </div>
           <h5>${comments.user}</h5>
           <p>${comments.dateTime}</p>
@@ -122,15 +117,6 @@ function commentblackStars(score) {
     x += `<span class="fa fa-star"></span>`;
   }
   return x;
-}
-
-function cardRelated(response) {
-  for (let images of response.relatedProducts) {
-    d.getElementById("relatedImages").innerHTML += `
-                                <img src="${images}" alt="${response.category}" width="300" height="300" class="img-thumbnail my-3">
-                                </div>
-                                            `;
-  }
 }
 
 //trabajando con la promesa y insertando al dom el contenido
@@ -166,8 +152,10 @@ document.addEventListener("submit", (e) => {
         `      
         <div class="border d-flex flex-column mx-5 my-2">
         <div class="d-flex flex-row justify-content-around">
-          <div>${commentStars( valueSelect )}${commentblackStars(valueSelect)}</div>
-          <h5>${localStorage.getItem( "emailValue" )}</h5>
+          <div>${commentStars(valueSelect)}${commentblackStars(
+          valueSelect
+        )}</div>
+          <h5>${localStorage.getItem("emailValue")}</h5>
           <p>${today}</p>
         </div>
         <div class="d-flex flex-row justify-content-center">
