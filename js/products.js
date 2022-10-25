@@ -8,22 +8,31 @@
         let container = document.querySelector('#cat-list-container');
         container.innerHTML += 
         ` 
-        <div onclick="setproductsID(${product.id})" class="list-group-item list-group-item-action cursor-active">    
+    <div
+        onclick="setproductsID(${product.id})"
+        class="list-group-item list-group-item-action cursor-active"
+        >
         <div class="row">
-        <div class="col-3">
-        <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
-        </div>
-        <div class="col">
-        <div class='d-flex w-100 justify-content-between'>
-        <h4 class="mb-1"> ${product.name} </h4>
-        <small class="text-muted">${product.soldCount} artículos</small>
-        </div>
-        <div>
-        <h4 class="mb-2">${product.currency} ${product.cost}</h4>
-        </div>
-        <p class="mb-1">${product.description}</p>
-        </div>
-        </div>
+            <div class="col-3">
+            <img
+                src="${product.image}"
+                alt="${product.description}"
+                class="img-thumbnail"
+            />
+            </div>
+            <div class="col">
+            <div class="d-flex w-100 justify-content-between">
+                <h4 class="mb-1">${product.name}</h4>
+                <small class="text-muted">${product.soldCount} artículos</small>
+            </div>
+            <div>
+                <h4 class="mb-2">${product.currency} ${product.cost}</h4>
+            </div>
+            <p class="mb-1">${product.description}</p>
+            </div>
+            </div>
+    </div>
+
         ` 
     }
     

@@ -10,40 +10,43 @@ async function getDatas() {
     for (let i = 0; i < response.images.length; i++) {
       document.getElementById(
         "innerCarousel"
-      ).innerHTML += `                         <div class="carousel-item itemProduct">  
-                                 <img src="${response.images[i]}" class="d-block w-100">
-                                 <div class="carousel-caption d-none d-md-block">
-                                 </div>
-                                 </div>
-                           `;
+      ).innerHTML += 
+      `<div class="carousel-item itemProduct">
+      <img src="${response.images[i]}" class="d-block w-100" />
+      <div class="carousel-caption d-none d-md-block"></div>
+    </div>`;
+
       const item = document.querySelectorAll(".itemProduct");
       item[0].classList.add("active");
     }
     for (let i = 0; i < response.relatedProducts.length; i++) {
-      document.getElementById("carouselItemRelated").innerHTML += `
-     <div class="carousel-item itemRelated">
+      document.getElementById("carouselItemRelated").innerHTML +=
+       `
+       <div class="carousel-item itemRelated">
      <img src="${response.relatedProducts[i].image}" class="d-block w-100">
        <div class="carousel-caption d-none d-md-block">
        <h4 class='bg-light py-1 rounded'>${response.relatedProducts[i].name}</h4>
        </div>`;
 
-      const itemRelated = document.querySelectorAll(".itemRelated")
+      const itemRelated = document.querySelectorAll(".itemRelated");
       itemRelated[0].classList.add("active");
     }
-    container.innerHTML += `
-        <h2> ${response.name} </h2>
-        <div class='d-flex justify-content-end mx-5'>
-        <button id='btnBuy' type="button" class="btn btn-success">Comprar</button></div>
-        <div class='col'>
-        <h4 class="mb-1">Precio:</h4>
-        <p>${response.currency} ${response.cost}</p>
-        <h4 >Descripcion:</h4>
-        <p>${response.description}</p>
-        <h4 class="mb-1 ">Categoria:</h4>
-        <p>${response.category}</p>
-        <h4 class="mb-1 ">Cantidad de Vendidos:</h4>
-        <p>${response.soldCount}</p>
-        </div>
+    container.innerHTML += 
+    `
+    <h2>${response.name}</h2>
+    <div class="d-flex justify-content-end mx-5">
+      <button id="btnBuy" type="button" class="btn btn-success">Comprar</button>
+    </div>
+    <div class="col">
+      <h4 class="mb-1">Precio:</h4>
+      <p>${response.currency} ${response.cost}</p>
+      <h4>Descripcion:</h4>
+      <p>${response.description}</p>
+      <h4 class="mb-1">Categoria:</h4>
+      <p>${response.category}</p>
+      <h4 class="mb-1">Cantidad de Vendidos:</h4>
+      <p>${response.soldCount}</p>
+    </div>
         `;
 
     let btn = document.getElementById("btnBuy");
@@ -85,20 +88,18 @@ function cardComments(response) {
   for (comments of response) {
     container.innerHTML += `      
     <div class="border border d-flex flex-column mx-5 my-2">
-    <div class='d-flex flex-row justify-content-around'>
-    <div>
-                                    ${commentStars(
-                                      comments.score
-                                    )}${commentblackStars(comments.score)}
-                                    </div>
-                                    <h5>${comments.user}</h5>
-                                    <p>${comments.dateTime}</p>
-                                    </div>
-                                    <div class='d-flex flex-row justify-content-center'>
-                                    <p>${comments.description}</p>
-                                    </div>
-                                    </div>
-                                    `;
+    <div class="d-flex flex-row justify-content-around">
+      <div>
+        ${commentStars( comments.score )}${commentblackStars(comments.score)}
+      </div>
+      <h5>${comments.user}</h5>
+      <p>${comments.dateTime}</p>
+    </div>
+    <div class="d-flex flex-row justify-content-center">
+      <p>${comments.description}</p>
+    </div>
+  </div>
+  `;
   }
 }
 //ingresar puntuacion reccorriendo el score
@@ -162,23 +163,17 @@ document.addEventListener("submit", (e) => {
       container.insertAdjacentHTML(
         "afterbegin",
         `      
-                            <div class="border d-flex flex-column mx-5 my-2">
-                                        <div class='d-flex flex-row justify-content-around'>
-                                        <div>
-                                        ${commentStars(
-                                          valueSelect
-                                        )}${commentblackStars(valueSelect)}
-                                        </div>
-                                        <h5>${localStorage.getItem(
-                                          "emailValue"
-                                        )}</h5>
-                                        <p>${today}</p>
-                                        </div>
-                                        <div class='d-flex flex-row justify-content-center'>
-                                        <p>${textarea}</p>
-                                        </div>
-                                        </div>
-                                        `
+        <div class="border d-flex flex-column mx-5 my-2">
+        <div class="d-flex flex-row justify-content-around">
+          <div>${commentStars( valueSelect )}${commentblackStars(valueSelect)}</div>
+          <h5>${localStorage.getItem( "emailValue" )}</h5>
+          <p>${today}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center">
+          <p>${textarea}</p>
+        </div>
+      </div> 
+      `
       );
       spinner.classList.add("active");
       msgSuccess.innerHTML = `<span>Comentario Enviado <img width=30px src="./img/chat.png"></span>`;
