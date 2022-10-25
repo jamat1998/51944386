@@ -78,7 +78,7 @@ async function getDatas() {
 
 getDatas();
 
-//cards para luego ingresar el contenido al sitio
+//cards para luego ingresar el contenido al sitio.
 
 let container = document.querySelector(".containerCommentsInfo");
 
