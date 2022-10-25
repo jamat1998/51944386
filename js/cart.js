@@ -7,6 +7,8 @@ let inputStandar = document.getElementById("inputStandar");
 let inputPremium = document.getElementById("inputPremium");
 let push = false;
 
+//funcion para insertar el contenido
+
 function inner(img, name, currency, cost, id) {
   container.innerHTML += `
   <td><img src='${img}' width='100px'></td>
@@ -25,6 +27,8 @@ function inner(img, name, currency, cost, id) {
     </table>
     `;
 }
+
+//funcion para realizar los calculos totales
 
 function calcs(porcent) {
   let subTotalValue = subtotalCost.textContent.slice(
@@ -210,6 +214,7 @@ getData();
 })();
 
 //ACTUALIZACION DE COSTOS EN TIEMPO REAL
+
 inputExpress.addEventListener("click", () => {
   calcs(7);
 });

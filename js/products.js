@@ -4,6 +4,7 @@
         window.location = "product-info.html"
     }
     //FUNCION QUE AGREGA LAS CARDS DE PRODUCTOS
+    
     function innerContainer(product){
         let container = document.querySelector('#cat-list-container');
         container.innerHTML += 
@@ -28,7 +29,7 @@
             <div>
                 <h4 class="mb-2">${product.currency} ${product.cost}</h4>
             </div>
-            <p class="mb-1">${product.description}</p>
+              <p class="mb-1">${product.description}</p>
             </div>
             </div>
     </div>

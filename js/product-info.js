@@ -11,7 +11,8 @@ async function getDatas() {
       document.getElementById(
         "innerCarousel"
       ).innerHTML += 
-      `<div class="carousel-item itemProduct">
+      `
+    <div class="carousel-item itemProduct">
       <img src="${response.images[i]}" class="d-block w-100" />
       <div class="carousel-caption d-none d-md-block"></div>
     </div>`;
@@ -23,9 +24,9 @@ async function getDatas() {
       document.getElementById("carouselItemRelated").innerHTML +=
        `
        <div class="carousel-item itemRelated">
-     <img src="${response.relatedProducts[i].image}" class="d-block w-100">
+        <img src="${response.relatedProducts[i].image}" class="d-block w-100">
        <div class="carousel-caption d-none d-md-block">
-       <h4 class='bg-light py-1 rounded'>${response.relatedProducts[i].name}</h4>
+         <h4 class='bg-light py-1 rounded'>${response.relatedProducts[i].name}</h4>
        </div>`;
 
       const itemRelated = document.querySelectorAll(".itemRelated");
@@ -55,7 +56,7 @@ async function getDatas() {
       btn.insertAdjacentHTML(
         "beforebegin",
         `<span class='mx-5' id='alert'>
-        Se agrego el articulo al carrito!
+           Se agrego el articulo al carrito!
         </span>`
       );
       setTimeout(() => {
@@ -88,17 +89,17 @@ function cardComments(response) {
   for (comments of response) {
     container.innerHTML += `      
     <div class="border border d-flex flex-column mx-5 my-2">
-    <div class="d-flex flex-row justify-content-around">
-      <div>
+      <div class="d-flex flex-row justify-content-around">
+        <div>
         ${commentStars( comments.score )}${commentblackStars(comments.score)}
+        </div>
+          <h5>${comments.user}</h5>
+          <p>${comments.dateTime}</p>
+        </div>
+      <div class="d-flex flex-row justify-content-center">
+        <p>${comments.description}</p>
       </div>
-      <h5>${comments.user}</h5>
-      <p>${comments.dateTime}</p>
     </div>
-    <div class="d-flex flex-row justify-content-center">
-      <p>${comments.description}</p>
-    </div>
-  </div>
   `;
   }
 }
