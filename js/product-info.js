@@ -27,8 +27,7 @@ async function getDatas() {
        <h4 class='bg-light py-1 rounded'>${response.relatedProducts[i].name}</h4>
        </div>`;
 
-      const itemRelated = document.querySelectorAll(".itemRelated");
-      console.log(itemRelated);
+      const itemRelated = document.querySelectorAll(".itemRelated")
       itemRelated[0].classList.add("active");
     }
     container.innerHTML += `
