@@ -12,7 +12,7 @@ $inputs.forEach(input=>{
             localStorage.setItem('emailValue', $inputs[0].value)
             const imagenull= '' 
             localStorage.setItem('profilePicture', imagenull)
-            window.location.href = 'https://jamat1998.github.io/e-commerce-JAP/portada.html'
+            window.location.href = 'https://jamat1998.github.io/e-commerce-JAP/frontPage.html'
         }
         if(input.value == ''){
             $span.classList.remove('none')
