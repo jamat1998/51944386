@@ -90,12 +90,9 @@ async function getData() {
       let name = item.name;
       let image = item.image;
       let cost = item.cost;
-      if(item.currency == 'UYU'){
-        inner(image, name, cost/40, id);
-      }
-      if(item.currency == 'USD'){
-        inner(image, name, cost, id);
-      }
+      item.currency == 'UYU' 
+      ? inner(image, name, cost/40, id) 
+      : inner(image, name, cost, id);
       ids.push(item.id);
     }
     const input = document.querySelectorAll(".input");
