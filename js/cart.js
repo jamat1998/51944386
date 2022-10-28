@@ -9,7 +9,7 @@ let push = false;
 
 //funcion para insertar el contenido
 
-function inner(img, name, currency, cost, id) {
+function inner(img, name, cost, id) {
   container.innerHTML += `
   <td><img src='${img}' width='100px'></td>
   <td>${name}</td>
@@ -75,7 +75,6 @@ async function getData() {
     inner(
       response.articles[0].image,
       response.articles[0].name,
-      response.articles[0].currency,
       response.articles[0].unitCost,
       response.articles[0].id
     );
@@ -90,9 +89,13 @@ async function getData() {
       let id = item.id;
       let name = item.name;
       let image = item.image;
-      let currency = item.currency;
       let cost = item.cost;
-      inner(image, name, currency, cost, id);
+      if(item.currency == 'UYU'){
+        inner(image, name, cost/40, id);
+      }
+      if(item.currency == 'USD'){
+        inner(image, name, cost, id);
+      }
       ids.push(item.id);
     }
     const input = document.querySelectorAll(".input");
