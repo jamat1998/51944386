@@ -13,13 +13,13 @@ function inner(img, name, currency, cost, id) {
   container.innerHTML += `
   <td><img src='${img}' width='100px'></td>
   <td>${name}</td>
-    <td>${currency}</td>
+    <td>USD</td>
     <td>${cost}</td>
     <td><div class="input-group-sm col-5">
     <input type='number'class="form-control input" value=1 min=1 required>
     </div>
     </td>
-    <td class='ttl'>${currency} ${cost}</td>
+    <td class='ttl'>USD ${cost}</td>
     <td>
     <button type="button" class="btn btn-outline-danger btnDelete" value=${id}>Eliminar</button>
     </td>

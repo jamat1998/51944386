@@ -64,7 +64,7 @@ async function getDatas() {
         id: response.id,
         name: response.name,
         image: response.images[0],
-        cost: response.cost,
+        cost: response.cost/40,
         currency: response.currency,
       };
       data.push(res);
