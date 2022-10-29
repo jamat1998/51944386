@@ -62,7 +62,6 @@ document.querySelector('#navbarNav ul').innerHTML += `
   closeSession.addEventListener('click',()=>{
     localStorage.removeItem('emailValue')
     localStorage.removeItem('profilePicture')
-    localStorage.removeItem('profileInfo')
     window.location='index.html'
   })
 

@@ -7,6 +7,9 @@ const emailInput=document.getElementById('emailInput')
 const btnSaveChanges=document.getElementById('btnSaveChanges')
 const saveChanges=document.getElementById('saveChanges')
 
+let emailValue = localStorage.getItem("emailValue");
+emailInput.value=`${emailValue}`
+
 saveChanges.addEventListener('submit',(e)=>{
   e.preventDefault()
 
@@ -18,10 +21,10 @@ saveChanges.addEventListener('submit',(e)=>{
     emailInput:emailInput.value,
     secondSurnameInput:secondSurnameInput.value
   };
-  localStorage.setItem("profileInfo", JSON.stringify(res));
+  localStorage.setItem(`${emailValue}`, JSON.stringify(res));
 });
 document.addEventListener('DOMContentLoaded',()=>{
-  let items = JSON.parse(localStorage.getItem("profileInfo"));
+  let items = JSON.parse(localStorage.getItem(`${emailValue}`));
     secondNameInput.value=items.secondNameInput
     firstSurnameInput.value=items.firstSurnameInput
     contactInput.value=items.contactInput
@@ -29,5 +32,3 @@ document.addEventListener('DOMContentLoaded',()=>{
     emailInput.value=items.emailInput
     secondSurnameInput.value=items.secondSurnameInput
 })
-let emailValue = localStorage.getItem("emailValue");
-emailInput.value=`${emailValue}`
