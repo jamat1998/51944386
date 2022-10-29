@@ -12,22 +12,20 @@ const saveChanges = document.getElementById("saveChanges");
 let emailValue = localStorage.getItem("emailValue");
 emailInput.value = emailValue;
 
-
-
-saveChanges.addEventListener("submit", (e) => {
-  e.preventDefault();
-
   imageInput.addEventListener('change',(e)=>{
     const reader= new FileReader();
   
     reader.addEventListener('load',()=>{
-      localStorage.setItem('imageProfile',reader.result)
+      localStorage.setItem(`imageProfile de ${emailValue}`, reader.result)
     })
     
     reader.readAsDataURL(e.target.files[0])
   })
   
-  const imageProfile= localStorage.getItem('imageProfile')
+
+saveChanges.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const imageProfile= localStorage.getItem(`imageProfile de ${emailValue}`)
   let res = {
     secondName: secondNameInput.value,
     firstSurname: firstSurnameInput.value,
@@ -64,7 +62,7 @@ saveChanges.addEventListener("submit", (e) => {
             viewImage.setAttribute('src', items.imageProfile)
           }
           if(!items){
-            viewImage.setAttribute('src', './profile.jpg')
+            viewImage.setAttribute('src', './img/profile.jpg')
           }
           
 });
