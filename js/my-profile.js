@@ -1,34 +1,41 @@
-const firstNameInput=document.getElementById('firstNameInput')
-const secondNameInput=document.getElementById('secondNameInput')
-const firstSurnameInput=document.getElementById('firstSurnameInput')
-const secondSurnameInput=document.getElementById('secondSurnameInput')
-const contactInput=document.getElementById('contactInput')
-const emailInput=document.getElementById('emailInput')
-const btnSaveChanges=document.getElementById('btnSaveChanges')
-const saveChanges=document.getElementById('saveChanges')
+const firstNameInput = document.getElementById("firstNameInput");
+const secondNameInput = document.getElementById("secondNameInput");
+const firstSurnameInput = document.getElementById("firstSurnameInput");
+const secondSurnameInput = document.getElementById("secondSurnameInput");
+const contactInput = document.getElementById("contactInput");
+const emailInput = document.getElementById("emailInput");
+const btnSaveChanges = document.getElementById("btnSaveChanges");
+const saveChanges = document.getElementById("saveChanges");
 
 let emailValue = localStorage.getItem("emailValue");
-emailInput.value=`${emailValue}`
+emailInput.value = emailValue;
 
-saveChanges.addEventListener('submit',(e)=>{
-  e.preventDefault()
+saveChanges.addEventListener("submit", (e) => {
+  e.preventDefault();
 
   let res = {
-    secondNameInput:secondNameInput.value,
-    firstSurnameInput:firstSurnameInput.value,
-    contactInput:contactInput.value,
-    firstNameInput:firstNameInput.value,
-    emailInput:emailInput.value,
-    secondSurnameInput:secondSurnameInput.value
+    secondName: secondNameInput.value,
+    firstSurname: firstSurnameInput.value,
+    contact: contactInput.value,
+    firstName: firstNameInput.value,
+    email: emailInput.value,
+    secondSurname: secondSurnameInput.value,
   };
   localStorage.setItem(`${emailValue}`, JSON.stringify(res));
+  btnSaveChanges.innerHTML += 
+  `<div id='alertSuccess' class="alert alert-success" role="alert">
+         Informacion guardada satisfactoriamente!
+   </div>`;
+  setTimeout(() => {
+    document.getElementById("alertSuccess").remove();
+  }, 2500);
 });
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener("DOMContentLoaded", () => {
   let items = JSON.parse(localStorage.getItem(`${emailValue}`));
-    secondNameInput.value=items.secondNameInput
-    firstSurnameInput.value=items.firstSurnameInput
-    contactInput.value=items.contactInput
-    firstNameInput.value=items.firstNameInput
-    emailInput.value=items.emailInput
-    secondSurnameInput.value=items.secondSurnameInput
-})
+  secondNameInput.value = items.secondName;
+  firstSurnameInput.value = items.firstSurname;
+  contactInput.value = items.contact;
+  firstNameInput.value = items.firstName;
+  emailInput.value = items.email;
+  secondSurnameInput.value = items.secondSurname;
+});

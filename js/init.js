@@ -42,18 +42,25 @@ let getJSONData = function(url){
 //INSERTAR EMAIL DE USUARIO Y FOTO(SI SE INGRESA POR GOOGLESIGN)
 let storageEmailLogin = localStorage.getItem('emailValue')
 const storagePicture = localStorage.getItem('profilePicture')
+if(storageEmailLogin !== null){
 document.querySelector('#navbarNav ul').innerHTML += `
 <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-  ${localStorage.getItem('emailValue')}
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="my-profile.html">Mi Perfil<img src="${storagePicture}" id='profilePicture'></a>
-    <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
-    <li><a class="dropdown-item" id='closeSesion' href="#">Cerrar Sesion</a></li>
+<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+${localStorage.getItem('emailValue')}
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+<li><a class="dropdown-item profileMenu" href="my-profile.html">Mi Perfil<img src="${storagePicture}" id='profilePicture'></a>
+<li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+<li><a class="dropdown-item" id='closeSesion' href="#">Cerrar Sesion</a></li>
   </ul>
 </div>
 `
+  }
+  if(storageEmailLogin === null){
+    document.querySelector('#navbarNav ul').innerHTML +=`<a href='./index.html'><button class="btn btn-secondary" type="button">
+    Iniciar Sesion
+    </button></a> `
+  }
 
   if(document.getElementById('profilePicture').getAttribute('src') == null){
     document.getElementById('profilePicture').remove();
