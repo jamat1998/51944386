@@ -64,36 +64,36 @@
     <main class="container w-50 my-4">
         <h1 class="mb-5">Perfil</h1>
         <hr>
-        <form class="container">
+        <form id="saveChanges" class="container">
           <div class="row row-cols-2">
           <div class="mb-3">
           <label for="" class="form-label">Primer Nombre:</label>
-          <input type="text" class="form-control"></label>
+          <input id="firstNameInput" type="text" class="form-control" required></label>
         </div>
         <div class="mb-3">
           <label for="" class="form-label">Segundo Nombre:</label>
-          <input type="text" class="form-control">
+          <input id="secondNameInput" type="text" class="form-control">
         </div>
         <div class="mb-3">
           <label for="" class="form-label">Primer Apellido:</label>
-          <input type="text" class="form-control">
+          <input id="firstSurnameInput" type="text" class="form-control" required>
       </div>
             <div class="mb-3">
           <label for="" class="form-label">Segundo Apellido:</label>
-            <input type="text" class="form-control">
+            <input id="secondSurnameInput" type="text" class="form-control">
           </div>
             <div class="mb-3">
           <label for="" class="form-label">Correo Electronico:</label>
-            <input type="email" class="form-control">
+            <input id="emailInput" type="email" class="form-control" required>
           </div>
             <div class="mb-3">
           <label for="" class="form-label">Numero de contacto:</label>
-            <input type="number" class="form-control">
+            <input id="contactInput" type="number" class="form-control">
           </div>
         </div>
         <hr>
         <div>
-          <button class="btn btn-primary">Guardar Cambios</button>
+          <button id="btnSaveChanges" class="btn btn-primary">Guardar Cambios</button>
         </div>
         </form>
       </div>
