@@ -62,7 +62,10 @@
       </div>
     </nav>
     <main class="container w-50 my-4">
+      <div class="d-flex justify-content-between">
         <h1 class="mb-5">Perfil</h1>
+        <img id="viewImage" style="width:100px; height: 100px;" src="./img/profile.png" alt="">
+      </div>
         <hr>
         <form id="saveChanges" class="container">
           <div class="row row-cols-2">
@@ -85,6 +88,10 @@
             <div class="mb-3">
           <label for="" class="form-label">Correo Electronico:</label>
             <input id="emailInput" type="email" class="form-control" required>
+          </div>
+            <div class="mb-3">
+          <label for="" class="form-label">Imagen de perfil:</label>
+            <input id="imageInput" type="file" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload" class="form-control">
           </div>
             <div class="mb-3">
           <label for="" class="form-label">Numero de contacto:</label>
