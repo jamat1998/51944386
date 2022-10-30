@@ -47,9 +47,9 @@ let getJSONData = function (url) {
       return result;
     });
 };
-//INSERTAR EMAIL DE USUARIO Y FOTO(SI SE INGRESA POR GOOGLESIGN)
+//INSERTAR EMAIL DE USUARIO Y FOTO DEL DROPDOWN
 let storageEmailLogin = localStorage.getItem("emailValue");
-const storagePicture = localStorage.getItem("profilePicture");
+const imageProfile= localStorage.getItem(`imageProfile de ${storageEmailLogin}`)
 if (storageEmailLogin !== null) {
   document.querySelector("#navbarNav ul").innerHTML += `
 <div class="dropdown">
@@ -57,12 +57,17 @@ if (storageEmailLogin !== null) {
 ${localStorage.getItem("emailValue")}
 </button>
 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-<li><a class="dropdown-item profileMenu" href="my-profile.html">Mi Perfil<img src="${storagePicture}" id='profilePicture'></a>
+<li><a class="dropdown-item profileMenu" href="my-profile.html">Mi Perfil<img src="${imageProfile}" id='profilePicture'></a>
 <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
 <li><a class="dropdown-item" id='closeSesion' href="#">Cerrar Sesion</a></li>
   </ul>
 </div>
 `;
+if(!imageProfile){
+  document.getElementById('profilePicture').setAttribute('src','./img/profile.jpg')
+}
+
+//SI NO HAY USUARIO REGISTRADO EL BOTON MENU SE CONVIERTE EN INICIAR SESION
 }
 if (storageEmailLogin === null) {
   document.querySelector(
@@ -71,10 +76,7 @@ if (storageEmailLogin === null) {
     Iniciar Sesion
     </button></a> `;
 }
-
-if (document.getElementById("profilePicture").getAttribute("src") == null) {
-  document.getElementById("profilePicture").remove();
-}
+ //BOTON CERRAR SESION
 const closeSession = document.getElementById("closeSesion");
 closeSession.addEventListener("click", () => {
   localStorage.removeItem("emailValue");

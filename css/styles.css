@@ -194,7 +194,8 @@ a.custom-card:hover {
 }
 #profilePicture{
 border-radius: 50%;
-width: 35px;
+width: 30px;
+height: 30px;
 margin-left: 20px;
 }
 #profile{
