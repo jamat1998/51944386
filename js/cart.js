@@ -13,8 +13,7 @@ function inner(img, name, cost, id) {
   container.innerHTML += `
   <td><img src='${img}' width='100px'></td>
   <td>${name}</td>
-    <td>USD</td>
-    <td>${cost}</td>
+    <td>USD ${cost}</td>
     <td><div class="input-group-sm col-5">
     <input type='number'class="form-control input" value=1 min=1 required>
     </div>
@@ -102,13 +101,12 @@ async function getData() {
     for (let i of input) {
       i.addEventListener("input", (e) => {
         let cuantity = e.target.value;
-        let cost = e.path[3].cells[3].textContent;
+        let cost = e.path[3].cells[2].textContent.slice(4, e.path[3].cells[2].textContent.length);
         let calc = parseInt(cuantity) * parseInt(cost);
-        let subtotal = e.path[3].cells[5];
-        let currency = e.path[3].cells[2].textContent;
+        let subtotal = e.path[3].cells[4];
         if (calc > 0) {
-          subtotal.innerHTML = `${currency} ${calc}`;
-        } else subtotal.innerHTML = `${currency} 0`;
+          subtotal.innerHTML = `USD ${calc}`;
+        } else subtotal.innerHTML = `USD 0`;
         totalsBuy();
       });
     }
