@@ -82,17 +82,19 @@ let container = document.querySelector(".containerCommentsInfo");
 
 function cardComments(response) {
   for (comments of response) {
+    console.log(comments.user.split('@'))
     container.innerHTML += `      
-    <div class="border border d-flex flex-column mx-5 my-2">
+    <div class="border rounded d-flex flex-column my-2">
       <div class="d-flex flex-row justify-content-around">
-        <div>
-        ${commentStars(comments.score)}${commentblackStars(comments.score)}
+      <p>${comments.dateTime}</p>
+      <h5>${comments.user}</h5>
+      <div>
+      ${commentStars(comments.score)}${commentblackStars(comments.score)}
+      </div>
         </div>
-          <h5>${comments.user}</h5>
-          <p>${comments.dateTime}</p>
-        </div>
-      <div class="d-flex flex-row justify-content-center">
-        <p>${comments.description}</p>
+        <hr class='m-0'>
+      <div>
+        <p class='mt-2'>${comments.description}</p>
       </div>
     </div>
   `;
@@ -138,30 +140,29 @@ let today = date.toLocaleString();
 //envento submit para que se ejecute al ingresar el nuevo comentario
 
 document.addEventListener("submit", (e) => {
-  let textarea = document.getElementById("comment").value;
+  let textareaValue = document.getElementById("comment").value;
   let valueSelect = document.getElementById("points").value;
   const spanError = document.getElementById("spanError");
   const spinner = document.querySelector(".spinner-border");
   const msgSuccess = document.getElementById("msgSuccess");
   e.preventDefault();
-  if (textarea !== "") {
+  if (textareaValue !== "") {
     spinner.classList.remove("active");
     setTimeout(() => {
+      let user = localStorage.getItem("emailValue").split('@')
       container.insertAdjacentHTML(
         "afterbegin",
-        `      
-        <div class="border d-flex flex-column mx-5 my-2">
+        `    <div class="border rounded d-flex flex-column my-2">
         <div class="d-flex flex-row justify-content-around">
-          <div>${commentStars(valueSelect)}${commentblackStars(
-          valueSelect
-        )}</div>
-          <h5>${localStorage.getItem("emailValue")}</h5>
-          <p>${today}</p>
+        <p>${today}</p>
+        <h5>${user[0]}</h5>
+        <div>${commentStars(valueSelect)}${commentblackStars(valueSelect)}</div>
         </div>
-        <div class="d-flex flex-row justify-content-center">
-          <p>${textarea}</p>
-        </div>
-      </div> 
+        <hr class='m-0'>
+        <div>
+          <p class='mt-2'>${textareaValue}</p>
+          </div>
+               </div>
       `
       );
       spinner.classList.add("active");
@@ -174,7 +175,7 @@ document.addEventListener("submit", (e) => {
     document.getElementById("comment").value = "";
     spanError.innerHTML = "";
   }
-  if (textarea === "") {
+  if (textareaValue === "") {
     spanError.innerHTML = `<span>Ingrese un comentario</span>`;
   }
 });
