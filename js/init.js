@@ -49,10 +49,10 @@ let getJSONData = function (url) {
 };
 //INSERTAR EMAIL DE USUARIO Y FOTO DEL DROPDOWN
 let storageEmailLogin = localStorage.getItem("emailValue");
-let storageitems = JSON.parse(localStorage.getItem(storageEmailLogin))
-let imagePro='./img/profile.jpg'
-if(storageitems){
-  imagePro=storageitems.imageProfile
+let storageitems = JSON.parse(localStorage.getItem(storageEmailLogin));
+let imagePro = "./img/profile.jpg";
+if (storageitems) {
+  imagePro = storageitems.imageProfile;
 }
 
 if (storageEmailLogin !== null) {
@@ -68,11 +68,13 @@ ${localStorage.getItem("emailValue")}
   </ul>
 </div>
 `;
-if(!imagePro){
-  document.getElementById('profilePicture').setAttribute('src','./img/profile.jpg')
-}
+  if (!imagePro) {
+    document
+      .getElementById("profilePicture")
+      .setAttribute("src", "./img/profile.jpg");
+  }
 
-//SI NO HAY USUARIO REGISTRADO EL BOTON MENU SE CONVIERTE EN INICIAR SESION
+  //SI NO HAY USUARIO REGISTRADO EL BOTON MENU SE CONVIERTE EN INICIAR SESION
 }
 if (storageEmailLogin === null) {
   document.querySelector(
@@ -81,7 +83,7 @@ if (storageEmailLogin === null) {
     Iniciar Sesion
     </button></a> `;
 }
- //BOTON CERRAR SESION
+//BOTON CERRAR SESION
 const closeSession = document.getElementById("closeSesion");
 closeSession.addEventListener("click", () => {
   localStorage.removeItem("emailValue");

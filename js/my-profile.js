@@ -12,13 +12,13 @@ const saveChanges = document.getElementById("saveChanges");
 //asigno valor por defecto al campo email.
 let emailValue = localStorage.getItem("emailValue");
 emailInput.value = emailValue;
-let imageUrl=''
+let imageUrl = "";
 //imagen en 64bits y la guardo en el localstorage
 imageInput.addEventListener("change", (e) => {
   const reader = new FileReader();
 
   reader.addEventListener("load", () => {
-    imageUrl=reader.result
+    imageUrl = reader.result;
   });
 
   reader.readAsDataURL(e.target.files[0]);
@@ -34,19 +34,20 @@ saveChanges.addEventListener("submit", (e) => {
     firstName: firstNameInput.value,
     email: emailInput.value,
     secondSurname: secondSurnameInput.value,
-    imageProfile:imageUrl
+    imageProfile: imageUrl,
   };
-  if(res.imageProfile === ''){
-    if(localStorage.getItem(`${emailValue}`)){
-      res.imageProfile = JSON.parse(localStorage.getItem(`${emailValue}`)).imageProfile;
-    }else res.imageProfile = '/img/profile.jpg'
+  if (res.imageProfile === "") {
+    if (localStorage.getItem(`${emailValue}`)) {
+      res.imageProfile = JSON.parse(
+        localStorage.getItem(`${emailValue}`)
+      ).imageProfile;
+    } else res.imageProfile = "/img/profile.jpg";
   }
 
   localStorage.setItem(`${emailValue}`, JSON.stringify(res));
-  
+
   //alerta de formulario
-  btnSaveChanges.innerHTML += 
-  `<div id='alertSuccess' class="alert alert-success" role="alert">
+  btnSaveChanges.innerHTML += `<div id='alertSuccess' class="alert alert-success" role="alert">
   Informacion guardada satisfactoriamente!
   </div>`;
   setTimeout(() => {
