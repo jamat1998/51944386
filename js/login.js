@@ -10,7 +10,7 @@ $inputs.forEach(input=>{
         e.preventDefault();
         if((!$inputs[1].value == '') && (!$inputs[0].value == '')){
             localStorage.setItem('emailValue', $inputs[0].value)
-            window.location.href = 'https://jamat1998.github.io/e-commerce-JAP/frontPage.html'
+            window.location = 'frontPage.html'
         }
         if(input.value == ''){
             $span.classList.remove('none')

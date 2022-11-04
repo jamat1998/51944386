@@ -82,7 +82,7 @@ let container = document.querySelector(".containerCommentsInfo");
 
 function cardComments(response) {
   for (comments of response) {
-    console.log(comments.user.split('@'))
+    console.log(comments.user.split("@"));
     container.innerHTML += `      
     <div class="border rounded d-flex flex-column my-2">
       <div class="d-flex flex-row justify-content-around">
@@ -149,7 +149,7 @@ document.addEventListener("submit", (e) => {
   if (textareaValue !== "") {
     spinner.classList.remove("active");
     setTimeout(() => {
-      let user = localStorage.getItem("emailValue").split('@')
+      let user = localStorage.getItem("emailValue").split("@");
       container.insertAdjacentHTML(
         "afterbegin",
         `    <div class="border rounded d-flex flex-column my-2">

@@ -49,7 +49,12 @@ let getJSONData = function (url) {
 };
 //INSERTAR EMAIL DE USUARIO Y FOTO DEL DROPDOWN
 let storageEmailLogin = localStorage.getItem("emailValue");
-const imageProfile= localStorage.getItem(`imageProfile de ${storageEmailLogin}`)
+let storageitems = JSON.parse(localStorage.getItem(storageEmailLogin))
+let imagePro='./img/profile.jpg'
+if(storageitems){
+  imagePro=storageitems.imageProfile
+}
+
 if (storageEmailLogin !== null) {
   document.querySelector("#navbarNav ul").innerHTML += `
 <div class="dropdown">
@@ -57,13 +62,13 @@ if (storageEmailLogin !== null) {
 ${localStorage.getItem("emailValue")}
 </button>
 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-<li><a class="dropdown-item profileMenu" href="my-profile.html">Mi Perfil<img src="${imageProfile}" id='profilePicture'></a>
+<li><a class="dropdown-item profileMenu" href="my-profile.html">Mi Perfil<img src="${imagePro}" id='profilePicture'></a>
 <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
 <li><a class="dropdown-item" id='closeSesion' href="#">Cerrar Sesion</a></li>
   </ul>
 </div>
 `;
-if(!imageProfile){
+if(!imagePro){
   document.getElementById('profilePicture').setAttribute('src','./img/profile.jpg')
 }
 
